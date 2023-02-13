@@ -1,13 +1,5 @@
-#username{
-    border: none;
-}
-#password{
-    border: none;
-}body{
-    margin: 0;
-    padding: 0;
-    font-family: 'Roboto', sans-serif;
-}
+
+
 /*Tạo đường thẳng cho mốc thời gian*/
 .timeline:before{
     content: '';
