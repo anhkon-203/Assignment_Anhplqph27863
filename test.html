@@ -1,0 +1,117 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/fontawesome.css">
+    <link rel="stylesheet" href="/css/brands.css">
+    <link rel="stylesheet" href="/css/solid.css">
+    <link rel="stylesheet" href="/css/v5-font-face.css">
+    <link rel="stylesheet" href="/FormLogin.css">
+</head>
+
+<body>
+    <!-- Button to trigger modal -->
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#forgotPasswordModal">
+        Quên mật khẩu
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="forgotPasswordModal" tabindex="-1" aria-labelledby="forgotPasswordModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header ">
+                    <div class="row">
+                        <h5 class="modal-title" id="forgotPasswordModalLabel">Quên mật khẩu</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="phone">
+                            <label class="form-check-label" for="phone">Gửi mã xác nhận qua số điện thoại</label>
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="emailCheckbox">
+                            <label class="form-check-label" for="emailCheckbox">Gửi mã xác nhận qua email</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="row mb-3">
+                            <div class="col-8">
+                                <input type="email" class="form-control" placeholder="Nhập địa chỉ email">
+                            </div>
+                            <div class="col-4">
+                                <button type="submit" class="btn btn-primary">Gửi</button>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-8">
+                                <input type="email" class="form-control" placeholder="Nhập địa chỉ email">
+                            </div>
+                            <div class="col-4">
+                                <button type="submit" class="btn btn-primary">Xác nhận</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                    <button type="button" class="btn btn-primary">Gửi</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <div class="row">
+                <h5 class="modal-title" id="forgotPasswordModalLabel">Quên mật khẩu</h5>
+                <div class="mb-3 form-check">
+                    <input type="checkbox" class="form-check-input" id="phone">
+                    <label class="form-check-label" for="phone">Gửi mã xác nhận qua số điện thoại</label>
+                </div>
+                <div class="mb-3 form-check">
+                    <input type="checkbox" class="form-check-input" id="emailCheckbox">
+                    <label class="form-check-label" for="emailCheckbox">Gửi mã xác nhận qua email</label>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <form>
+                <div class="row mb-3">
+                    <div class="col-8">
+                        <input type="email" class="form-control" placeholder="Nhập địa chỉ email">
+                    </div>
+                    <div class="col-4">
+                        <button type="submit" class="btn btn-primary">Gửi</button>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-8">
+                        <input type="email" class="form-control" placeholder="Nhập địa chỉ email">
+                    </div>
+                    <div class="col-4">
+                        <button type="submit" class="btn btn-primary">Xác nhận</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!-- <div class="card-footer">
+            <button type="button" class="btn btn-secondary float-end" data-bs-dismiss="modal">Đóng</button>
+            <button type="button" class="btn btn-primary float-end">Gửi</button>
+        </div> -->
+    </div>
+
+
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/popper.js"></script>
+    <script src="/js/jquery.min.js"></script>
+</body>
+
+</html>
