@@ -1,0 +1,110 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/addProduct.css">
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-md-3 col-lg-2 d-flex">
+                <nav class="navbar navbar-expand-lg navbar-light bg-light flex-column">
+                    <div class="container-fluid">
+                        <a class="navbar-brand" href="#">Trang chủ</a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#sidebarNav" aria-controls="sidebarNav" aria-expanded="false"
+                            aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="sidebarNav">
+                            <ul class="navbar-nav flex-column">
+                                <li class="nav-item">
+                                    <a class="nav-link active" aria-current="page" href="#">Admin</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Sản phẩm</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Thể loại</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+
+            <!-- Nội dung chính -->
+            <div class=" row col-md-9 col-lg-10  container-fluid">
+                <h1 class="text-center">Add Product</h1>
+                <div ng-app="myApp" ng-controller="myCtrl">
+                    <form>
+                        <div class="mb-3">
+                            <label for="productName" class="form-label">Category name</label>
+                            <input type="text" class="form-control" id="productName" ng-model="productName">
+                        </div>
+                        <button type="submit" class="btn btn-primary" ng-click="addProduct()">Add Category</button>
+                    </form>
+                </div>
+                <div ng-app="myApp" ng-controller="myCtrl">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>User</th>
+                                <th>Date</th>
+                                <th>Status</th>
+                                <th>Reason</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="item in data">
+                                <td>{{ item.id }}</td>
+                                <td>{{ item.user }}</td>
+                                <td>{{ item.date }}</td>
+                                <td>{{ item.status }}</td>
+                                <td>{{ item.reason }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+    <script src="js/angular.min.js"></script>
+    <script>
+        var app = angular.module('myApp', []);
+        app.controller('myCtrl', function ($scope) {
+            $scope.productName = "";
+            $scope.price = "";
+            $scope.category = "";
+            $scope.image = "";
+
+            $scope.addProduct = function () {
+                console.log($scope.productName);
+                console.log($scope.price);
+                console.log($scope.category);
+                console.log($scope.image);
+            };
+        });
+        var app = angular.module('myApp', []);
+        app.controller('myCtrl', function ($scope) {
+            $scope.data = [
+                { id: 1, user: 'User 1', date: '2022-02-14', status: 'Approved', reason: 'N/A' },
+                { id: 2, user: 'User 2', date: '2022-02-13', status: 'Pending', reason: 'Need more information' },
+                { id: 3, user: 'User 3', date: '2022-02-12', status: 'Rejected', reason: 'Out of stock' }
+            ];
+        });
+
+    </script>
+     
+</body>
+
+</html>
