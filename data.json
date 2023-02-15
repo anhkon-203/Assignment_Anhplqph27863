@@ -28,33 +28,41 @@
     {
       "name": "Quần",
       "status": true,
-      "id": 2
+      "id": 1
     }
   ],
   "products": [
     {
-      "id": 2,
-      "name": "Ao 2",
-      "price": 5000,
+      "name": "test 1",
+      "price": 220,
       "status": true,
-      "category": 1,
-      "image": ""
+      "category": "1",
+      "image": "",
+      "id": 1
     },
     {
-      "id": 3,
-      "name": "Quan 1",
-      "price": 10000,
+      "name": "tesst 2",
+      "price": 3330,
       "status": true,
-      "category": 2,
-      "image": ""
+      "category": "1",
+      "image": "",
+      "id": 2
     },
     {
-      "id": 4,
-      "name": "Quan 2",
-      "price": 15000,
+      "name": "test 3",
+      "price": 3,
       "status": true,
-      "category": 2,
-      "image": ""
+      "category": "1",
+      "image": "",
+      "id": 3
+    },
+    {
+      "name": "test 4",
+      "price": 33,
+      "status": false,
+      "category": "1",
+      "image": "",
+      "id": 4
     }
   ]
 }

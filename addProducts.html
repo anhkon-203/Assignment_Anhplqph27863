@@ -5,115 +5,108 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/addProduct.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
 </head>
 
-<body>
+<body ng-app="product_module">
     <div class="container-fluid">
         <div class="row">
             <!-- Sidebar -->
-            <div class="col-md-3 col-lg-2 d-flex">
-                <nav class="navbar navbar-expand-lg navbar-dark flex-column" style="background-color:#6E6A6B;">
-                    <div class="container-fluid">
-                        <a class="navbar-brand" href="#">Trang chủ</a>
-                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
-                            aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                            <ul class="navbar-nav flex-column">
-                                <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="#">Admin</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Sản phẩm</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Thể loại</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </nav>
+            <div class="col-md-3 col-lg-2 text-center text-light" style="background-color:#6E6A6B;">
+                <div class="row mt-5">
+                    <h2>Admin</h2>
+                </div>
+                <div class="row mt-5">
+                    <a class="nav-link" href="#">Sản phẩm</a>
+                </div>
+                <div class="row mt-5">
+                    <a class="nav-link" href="#">Thể loại</a>
+                </div>
             </div>
 
 
             <!-- Nội dung chính -->
-            <div class=" row col-md-9 col-lg-10  container-fluid">
-                <h1 class="text-center">Add Product</h1>
-                <div ng-app="myApp" ng-controller="myCtrl">
-                    <form>
+            <div class=" row col-md-9 col-lg-10  container-fluid" ng-controller="product_controller">
+                <h2 class="text-center">Add Product</h2>
+                <div class="col-8 offset-2">
+                    <form name="form_product">
                         <div class="mb-3">
                             <label for="productName" class="form-label">Product Name</label>
-                            <input type="text" class="form-control" id="productName" ng-model="productName">
+                            <input type="text" class="form-control" id="productName" ng-model="product.name">
                         </div>
                         <div class="mb-3">
                             <label for="price" class="form-label">Price</label>
-                            <input type="number" class="form-control" id="price" ng-model="price">
+                            <input type="number" class="form-control" id="price" ng-model="product.price">
                         </div>
-                        <div class="mb-3">
+                        <div class="mb-3" ng-controller="category_controller">
                             <label for="category" class="form-label">Category</label>
-                            <select class="form-select" id="category" ng-model="category">
-                                <option value="">Select a category</option>
-                                <option value="category1">Category 1</option>
-                                <option value="category2">Category 2</option>
-                                <option value="category3">Category 3</option>
+                            <select class="form-select" id="category" ng-model="product.category">
+                                <option ng-repeat="category in listCategory" value="{{ category.id }}">
+                                    {{ category.name }}
+                                </option>
                             </select>
                         </div>
                         <div class="mb-3">
                             <label for="image" class="form-label">Product Image</label>
-                            <input type="file" class="form-control" id="image" ng-model="image">
+                            <input type="file" class="form-control" id="image" ng-model="product.image">
                         </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                            <label class="form-check-label" for="flexRadioDefault1">
-                                Đang hoạt động
-                            </label>
+                        <div class="row">
+                            <div class="form-check col-6">
+                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"
+                                  ng-model="product.status" ng-value="true" ng-init="product.status=true" required>
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                  Đang hoạt động
+                                </label>
+                              </div>
+                              <div class="form-check col-6">
+                                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2"
+                                  ng-model="product.status" ng-value="false" required>
+                                <label class="form-check-label" for="flexRadioDefault2">
+                                  Ngừng hoạt động
+                                </label>
+                              </div>
+                              
                         </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2"
-                                checked>
-                            <label class="form-check-label" for="flexRadioDefault2">
-                                Ngừng hoạt động
-                            </label>
+                        <div class="row col-2">
+                            <button class="btn btn-primary mt-2" ng-click="save($event)">
+                                Submit
+                            </button>
+
+                            <button class="btn btn-secondary mt-2" ng-click="clear($event)">
+                                Clear
+                            </button>
                         </div>
-                        <button type="submit" class="btn btn-primary mt-5" ng-click="addProduct()">Submit</button>
                     </form>
                 </div>
-                <div ng-app="myApp" ng-controller="myCtrl">
+                <div>
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>ID</th>
-                                <th>User</th>
-                                <th>Date</th>
+                                <th>STT</th>
+                                <th>Name Product</th>
+                                <th>Price</th>
+                                <th>Category</th>
                                 <th>Status</th>
-                                <th>Reason</th>
+                                <th>URL</th>
+                                <th colspan="2">Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr ng-repeat="item in data">
-                                <td>{{ item.id }}</td>
-                                <td>{{ item.user }}</td>
-                                <td>{{ item.date }}</td>
-                                <td>{{ item.status }}</td>
-                                <td>{{ item.reason }}</td>
+                            <tr ng-repeat="product in listProduct">
+                                <td>{{ product.id }}</td>
+                                <td>{{ product.name }}</td>
+                                <td>{{ product.price }}</td>
+                                <td>{{ product.category }}</td>
+                                <td>{{ product.status ? 'Đang Hoạt Động' : 'Ngừng Hoạt Động' }}</td>
+                                <td>{{ product.image}}</td>
                                 <td>
-                                    <button
-                                        class="btn btn-primary"
-                                        href="#"
-                                        ng-click="btnUpdateOnClick($event, $index)"
-                                        >
+                                    <button class="btn btn-primary" href="#"
+                                        ng-click="btnUpdateOnClick($event, $index)">
                                         Update
                                     </button>
                                 </td>
                                 <td>
-                                    <button
-                                        class="btn btn-danger"
-                                        ng-click="btnDeleteOnClick($event, $index)"
-                                        href="#">
+                                    <button class="btn btn-danger" ng-click="btnDeleteOnClick($event, $index)" href="#">
                                         Delete
                                     </button>
                                 </td>
@@ -121,40 +114,29 @@
                         </tbody>
                     </table>
                 </div>
-
-
             </div>
         </div>
     </div>
-    <script src="js/angular.min.js"></script>
-    <script>
-        var app = angular.module('myApp', []);
-        app.controller('myCtrl', function ($scope) {
-            $scope.productName = "";
-            $scope.price = "";
-            $scope.category = "";
-            $scope.image = "";
 
-            $scope.addProduct = function () {
-                console.log($scope.productName);
-                console.log($scope.price);
-                console.log($scope.category);
-                console.log($scope.image);
-            };
-        });
-        var app = angular.module('myApp', []);
-        app.controller('myCtrl', function ($scope) {
-            $scope.data = [
-                { id: 1, user: 'User 1', date: '2022-02-14', status: 'Approved', reason: 'N/A' },
-                { id: 2, user: 'User 2', date: '2022-02-13', status: 'Pending', reason: 'Need more information' },
-                { id: 3, user: 'User 3', date: '2022-02-12', status: 'Rejected', reason: 'Out of stock' }
-            ];
-        });
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/popper.js"></script>
+    <script src="js/jquery.min.js"></script>
+
+
+    <script src="js/angular.min.js"></script>
+    <script src="/Controller/productsController.js"></script>
+
+    <script>
+
+        const app = angular.module("product_module", []);
+
+
+        app.controller("product_controller", product);
+
+        app.controller("category_controller", category);
+
 
     </script>
-    <script src="/js/bootstrap.min.js"></script>
-    <script src="/js/popper.js"></script>
-    <script src="/js/jquery.min.js"></script>
 </body>
 
 </html>
