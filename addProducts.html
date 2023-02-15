@@ -79,7 +79,7 @@
                                 Ngừng hoạt động
                             </label>
                         </div>
-                        <button type="submit" class="btn btn-primary mt-5" ng-click="addProduct()">Add Product</button>
+                        <button type="submit" class="btn btn-primary mt-5" ng-click="addProduct()">Submit</button>
                     </form>
                 </div>
                 <div ng-app="myApp" ng-controller="myCtrl">
@@ -100,6 +100,23 @@
                                 <td>{{ item.date }}</td>
                                 <td>{{ item.status }}</td>
                                 <td>{{ item.reason }}</td>
+                                <td>
+                                    <button
+                                        class="btn btn-primary"
+                                        href="#"
+                                        ng-click="btnUpdateOnClick($event, $index)"
+                                        >
+                                        Update
+                                    </button>
+                                </td>
+                                <td>
+                                    <button
+                                        class="btn btn-danger"
+                                        ng-click="btnDeleteOnClick($event, $index)"
+                                        href="#">
+                                        Delete
+                                    </button>
+                                </td>
                             </tr>
                         </tbody>
                     </table>

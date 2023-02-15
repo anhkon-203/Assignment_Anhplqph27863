@@ -1,117 +1,212 @@
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/fontawesome.css">
-    <link rel="stylesheet" href="/css/brands.css">
-    <link rel="stylesheet" href="/css/solid.css">
-    <link rel="stylesheet" href="/css/v5-font-face.css">
-    <link rel="stylesheet" href="/FormLogin.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
 </head>
-
-<body>
-    <!-- Button to trigger modal -->
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#forgotPasswordModal">
-        Quên mật khẩu
-    </button>
-
-    <!-- Modal -->
-    <div class="modal fade" id="forgotPasswordModal" tabindex="-1" aria-labelledby="forgotPasswordModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header ">
-                    <div class="row">
-                        <h5 class="modal-title" id="forgotPasswordModalLabel">Quên mật khẩu</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        <div class="mb-3 form-check">
-                            <input type="checkbox" class="form-check-input" id="phone">
-                            <label class="form-check-label" for="phone">Gửi mã xác nhận qua số điện thoại</label>
-                        </div>
-                        <div class="mb-3 form-check">
-                            <input type="checkbox" class="form-check-input" id="emailCheckbox">
-                            <label class="form-check-label" for="emailCheckbox">Gửi mã xác nhận qua email</label>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="row mb-3">
-                            <div class="col-8">
-                                <input type="email" class="form-control" placeholder="Nhập địa chỉ email">
-                            </div>
-                            <div class="col-4">
-                                <button type="submit" class="btn btn-primary">Gửi</button>
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <div class="col-8">
-                                <input type="email" class="form-control" placeholder="Nhập địa chỉ email">
-                            </div>
-                            <div class="col-4">
-                                <button type="submit" class="btn btn-primary">Xác nhận</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
-                    <button type="button" class="btn btn-primary">Gửi</button>
+<body ng-app="product_module">
+    <div ng-controller="product_controller" class="col-6 offset-3">
+        <form method="" action="" name="form_product">
+            <div class="mt-2">
+                <label>Name</label>
+                <input type="text" name="name" class="form-control" ng-model="product.name" required />
+                <span class="text-danger"
+                    ng-show="form_product.name.$invalid && form_product.name.$touched">
+                    Không được để trống
+                </span>
+            </div>
+            <div class="mt-2">
+                <label>Price</label>
+                <input type="number" name="price" class="form-control" ng-model="product.price" required />
+                <span class="text-danger"
+                    ng-show="form_product.price.$error.required && form_product.price.$touched">
+                    Không được để trống
+                </span>
+                <span class="text-danger"
+                    ng-show="form_product.price.$error.number && form_product.price.$touched">
+                    Phải là số
+                </span>
+            </div>
+            <div class="mt-2">
+                <label>Status</label>
+                <div>
+                    <input type="radio" name="status" class="form-check-inline"
+                        value="false" ng-model="product.status"
+                        ng-checked="product.status == false"
+                        required
+                    />
+                    <label>Không hoạt động</label>
+                    <input type="radio" name="status" class="form-check-inline"
+                        value="true" ng-model="product.status"
+                        ng-checked="product.status == true"
+                        required
+                    />
+                    <label>Đang hoạt động</label>
                 </div>
             </div>
-        </div>
-    </div>
+            <div class="mt-2">
+                <label>Category</label>
+                <select class="form-select" ng-model="product.category" required>
+                    <option
+                        ng-repeat="cate in listCategory"
+                        value="{{ cate.id }}">
+                        {{ cate.name }}
+                    </option>
+                </select>
 
-    <div class="card">
-        <div class="card-header">
-            <div class="row">
-                <h5 class="modal-title" id="forgotPasswordModalLabel">Quên mật khẩu</h5>
-                <div class="mb-3 form-check">
-                    <input type="checkbox" class="form-check-input" id="phone">
-                    <label class="form-check-label" for="phone">Gửi mã xác nhận qua số điện thoại</label>
-                </div>
-                <div class="mb-3 form-check">
-                    <input type="checkbox" class="form-check-input" id="emailCheckbox">
-                    <label class="form-check-label" for="emailCheckbox">Gửi mã xác nhận qua email</label>
-                </div>
+                <!-- <select class="form-select" ng-model="product.category"
+                    ng-options="category.name for category in listCategory">
+                </select> -->
             </div>
-        </div>
-        <div class="card-body">
-            <form>
-                <div class="row mb-3">
-                    <div class="col-8">
-                        <input type="email" class="form-control" placeholder="Nhập địa chỉ email">
-                    </div>
-                    <div class="col-4">
-                        <button type="submit" class="btn btn-primary">Gửi</button>
-                    </div>
-                </div>
 
-                <div class="row mb-3">
-                    <div class="col-8">
-                        <input type="email" class="form-control" placeholder="Nhập địa chỉ email">
-                    </div>
-                    <div class="col-4">
-                        <button type="submit" class="btn btn-primary">Xác nhận</button>
-                    </div>
-                </div>
-            </form>
-        </div>
-        <!-- <div class="card-footer">
-            <button type="button" class="btn btn-secondary float-end" data-bs-dismiss="modal">Đóng</button>
-            <button type="button" class="btn btn-primary float-end">Gửi</button>
-        </div> -->
+            <button
+                class="btn btn-primary mt-2"
+                ng-click="save($event)">
+                Submit
+            </button>
+
+            <button
+                class="btn btn-secondary mt-2"
+                ng-click="clear($event)">
+                Clear
+            </button>
+        </form>
+        <table class="table mt-4">
+            <thead>
+                <tr>
+                    <th>STT</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Category</th>
+                    <th>Status</th>
+                    <th colspan="2">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="product in listProduct">
+                    <td>{{ $index }}</td>
+                    <td>{{ product.name }}</td>
+                    <td>{{ product.price }}</td>
+                    <td>{{ product.category }}</td>
+                    <td>{{ product.status }}</td>
+                    <td>
+                        <button
+                            class="btn btn-primary"
+                            href="#"
+                            ng-click="btnUpdateOnClick($event, $index)"
+                            >
+                            Update
+                        </button>
+                    </td>
+                    <td>
+                        <button
+                            class="btn btn-danger"
+                            ng-click="btnDeleteOnClick($event, $index)"
+                            href="#">
+                            Delete
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 
+    <script src="js/angular.min.js"></script>
+    <script>
+        const app = angular.module("product_module", []);
+        function productController($scope, $http) {
+            // Nếu updateIndex == -1 -> Thêm mới, còn nếu updateIndex >= 0 -> Cập nhật
+            $scope.updateIndex = -1;
+            $scope.category = {
+                name: "",
+                price: 0,
+                status: true,
+                category: 1
+            };
 
-    <script src="/js/bootstrap.min.js"></script>
-    <script src="/js/popper.js"></script>
-    <script src="/js/jquery.min.js"></script>
+            $scope.listCategory = [
+                { id: 1, name: "Áo Nam" },
+                { id: 2, name: "Áo Nữ" },
+                { id: 3, name: "Áo Trẻ em" },
+            ];
+
+            $scope.listProduct = [];
+            const productApi = "http://localhost:3000/products";
+            $http.get(productApi)
+                .then(function (response) {
+                    $scope.listProduct = response.data;
+                });
+            
+            function them() {
+                $http.post(productApi, $scope.product)
+                    .then(function (response) {
+                        console.log(response);
+                    });;
+              
+            }
+            
+            function sua()
+            {
+                $http.put(productApi + "/" + $scope.listProduct[$scope.updateIndex].id, $scope.product)
+                .then(function (response) {
+                    console.log(response);
+                });
+                // $scope.listProduct[$scope.updateIndex] = $scope.product;
+                $scope.listProduct[$scope.updateIndex] = Object.assign({}, $scope.product);
+            }
+
+            $scope.clear = function (event) {
+                event.preventDefault();
+                $scope.product = {
+                    name: "",
+                    price: 0,
+                    status: true,
+                    category: 1
+                };
+                $scope.updateIndex = -1;
+            }
+
+            $scope.save = function (event) {
+                // Chặn hành động mặc định của form (sự kiện submit sẽ gây tải lại page)
+                // console.log(event)
+                event.preventDefault();
+              
+                if ($scope.updateIndex == -1) {
+                  them();
+                
+                } else {
+                    sua();
+                   
+                }
+            }
+
+            $scope.btnDeleteOnClick = function(event, index) {
+                event.preventDefault();
+                $http.delete(productApi + "/" + $scope.listProduct[index].id)
+                    .then(function (response) {
+                        console.log(response);
+                    });
+                $scope.listProduct.splice(index, 1);
+            }
+
+            $scope.btnUpdateOnClick = function(event, index) {
+                event.preventDefault();
+
+                const p = $scope.listProduct[index];
+                $scope.product.name = p.name;
+                $scope.product.price = p.price;
+                $scope.product.status = p.status;
+                $scope.product.category = p.category;
+                $scope.updateIndex = index;
+            }
+
+
+        }
+
+        app.controller("product_controller", productController);
+    </script>
 </body>
-
 </html>

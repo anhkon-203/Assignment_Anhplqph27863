@@ -1,9 +1,60 @@
 {
-    "posts": [
-      { "id": 1, "title": "json-server", "author": "typicode" }
-    ],
-    "comments": [
-      { "id": 1, "body": "some comment", "postId": 1 }
-    ],
-    "profile": { "name": "typicode" }
-  }
+  "users": [
+    {
+      "id": 1,
+      "fullName": "Nguyen Ngoc Ky",
+      "numberPhone": "0962894271",
+      "password": "123456"
+    }
+  ],
+  "carts": [
+    {
+      "id": 1,
+      "idUser": 1,
+      "idProduct": 1,
+      "quantity": 5
+    }
+  ],
+  "bills": [
+    {
+      "id": 1,
+      "idUser": 1,
+      "idProduct": 1,
+      "quantity": 5,
+      "status": 1
+    }
+  ],
+  "categories": [
+    {
+      "name": "Quần",
+      "status": true,
+      "id": 2
+    }
+  ],
+  "products": [
+    {
+      "id": 2,
+      "name": "Ao 2",
+      "price": 5000,
+      "status": true,
+      "category": 1,
+      "image": ""
+    },
+    {
+      "id": 3,
+      "name": "Quan 1",
+      "price": 10000,
+      "status": true,
+      "category": 2,
+      "image": ""
+    },
+    {
+      "id": 4,
+      "name": "Quan 2",
+      "price": 15000,
+      "status": true,
+      "category": 2,
+      "image": ""
+    }
+  ]
+}

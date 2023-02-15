@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="/addProduct.css">
 </head>
 
-<body>
+<body ng-app="category_module">
     <div class="container-fluid">
         <div class="row">
             <!-- Sidebar -->
@@ -42,86 +42,161 @@
 
             <!-- Nội dung chính -->
             <div class=" row col-md-9 col-lg-10  container-fluid">
-                <h1 class="text-center">Add Product</h1>
-                <div ng-app="myApp" ng-controller="myCtrl">
-                    <form>
-                        <div class="mb-3">
-                            <label for="productName" class="form-label">Category name</label>
-                            <input type="text" class="form-control" id="productName" ng-model="productName">
+                <h1 class="text-center"> Add Category</h1>
+                <div ng-controller="category_controller">
+                    <form method="" action="" name="form_category">
+                        <div class="mt-2">
+                            <label>Name</label>
+                            <input type="text" name="name" class="form-control" ng-model="category.name" required />
+                            <span class="text-danger"
+                                ng-show="form_category.name.$invalid && form_category.name.$touched">
+                                Không được để trống
+                            </span>
                         </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                            <label class="form-check-label" for="flexRadioDefault1">
-                                Đang hoạt động
-                            </label>
+                        <div class="mt-2">
+                            <label>Status</label>
+                            <div>
+                                <input type="radio" name="status" class="form-check-inline" value="false"
+                                    ng-model="category.status" ng-checked="category.status == false" required />
+                                <label>Không hoạt động</label>
+                                <input type="radio" name="status" class="form-check-inline" value="true"
+                                    ng-model="category.status" ng-checked="category.status == true" required />
+                                <label>Đang hoạt động</label>
+                            </div>
                         </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2"
-                                checked>
-                            <label class="form-check-label" for="flexRadioDefault2">
-                                Ngừng hoạt động
-                            </label>
-                        </div>
-                        <button type="submit" class="btn btn-primary mt-5" ng-click="addProduct()">Add Category</button>
+
+                        <button class="btn btn-primary mt-2" ng-click="save($event)">
+                            Submit
+                        </button>
+
+                        <button class="btn btn-secondary mt-2" ng-click="clear($event)">
+                            Clear
+                        </button>
                     </form>
-                </div>
-                <div ng-app="myApp" ng-controller="myCtrl">
-                    <table class="table">
+                    <table class="table mt-4">
                         <thead>
                             <tr>
-                                <th>ID</th>
-                                <th>User</th>
-                                <th>Date</th>
+                                <th>STT</th>
+                                <th>Name</th>
                                 <th>Status</th>
-                                <th>Reason</th>
+                                <th colspan="2">Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr ng-repeat="item in data">
-                                <td>{{ item.id }}</td>
-                                <td>{{ item.user }}</td>
-                                <td>{{ item.date }}</td>
-                                <td>{{ item.status }}</td>
-                                <td>{{ item.reason }}</td>
+                            <tr ng-repeat="category in listCategory">
+                                <td>{{ $index }}</td>
+                                <td>{{ category.name }}</td>
+                                <td>{{ category.status }}</td>
+                                <td>
+                                    <button class="btn btn-primary" href="#"
+                                        ng-click="btnUpdateOnClick($event, $index)">
+                                        Update
+                                    </button>
+                                </td>
+                                <td>
+                                    <button class="btn btn-danger" ng-click="btnDeleteOnClick($event, $index)" href="#">
+                                        Delete
+                                    </button>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
 
+                <script src="js/angular.min.js"></script>
+                <script>
+                    const app = angular.module("category_module", []);
+                    function categoryController($scope, $http) {
+                        // Nếu updateIndex == -1 -> Thêm mới, còn nếu updateIndex >= 0 -> Cập nhật
+                        $scope.updateIndex = -1;
+                        $scope.category = {
+                            name: "",
+                            status: true
+                        };
 
-            </div>
-        </div>
-    </div>
-    <script src="js/angular.min.js"></script>
-    <script>
-        var app = angular.module('myApp', []);
-        app.controller('myCtrl', function ($scope) {
-            $scope.productName = "";
-            $scope.price = "";
-            $scope.category = "";
-            $scope.image = "";
+                        $scope.listCategory = [
+                            { id: 1, name: "Áo Nam", status: true },
+                            { id: 2, name: "Áo Nữ", status: true },
+                            { id: 3, name: "Áo Trẻ em", status: true },
+                        ];
 
-            $scope.addProduct = function () {
-                console.log($scope.productName);
-                console.log($scope.price);
-                console.log($scope.category);
-                console.log($scope.image);
-            };
-        });
-        var app = angular.module('myApp', []);
-        app.controller('myCtrl', function ($scope) {
-            $scope.data = [
-                { id: 1, user: 'User 1', date: '2022-02-14', status: 'Approved', reason: 'N/A' },
-                { id: 2, user: 'User 2', date: '2022-02-13', status: 'Pending', reason: 'Need more information' },
-                { id: 3, user: 'User 3', date: '2022-02-12', status: 'Rejected', reason: 'Out of stock' }
-            ];
-        });
+                        const categoryApi = "http://localhost:3000/categories";
+                        $http.get(categoryApi)
+                            .then(function (response) {
+                                $scope.listCategory = response.data;
+                            });
 
-    </script>
+                        function them() {
+                            $http.post(categoryApi, $scope.category)
+                                .then(function (response) {
+                                    console.log(response);
+                                });
+                            $scope.listCategory.push($scope.category);
 
-    <script src="/js/bootstrap.min.js"></script>
-    <script src="/js/popper.js"></script>
-    <script src="/js/jquery.min.js"></script>
+                        }
+
+                        function sua() {
+                            $http.put(categoryApi + "/" + $scope.listCategory[$scope.updateIndex].id, $scope.category)
+                                .then(function (response) {
+                                    console.log(response);
+                                });
+                            // $scope.listProduct[$scope.updateIndex] = $scope.product;
+                            $scope.listCategory[$scope.updateIndex] = Object.assign({}, $scope.category);
+                        }
+
+                        $scope.clear = function (event) {
+                            event.preventDefault();
+                            $scope.product = {
+                                name: "",
+                                price: 0,
+                                status: true,
+                                category: 1
+                            };
+                            $scope.updateIndex = -1;
+                        }
+
+                        $scope.save = function (event) {
+                            // Chặn hành động mặc định của form (sự kiện submit sẽ gây tải lại page)
+                            // console.log(event)
+                            event.preventDefault();
+
+                            if ($scope.updateIndex == -1) {
+                                them();
+
+                            } else {
+                                sua();
+
+                            }
+                        }
+
+                        $scope.btnDeleteOnClick = function (event, index) {
+                            event.preventDefault();
+                            $http.delete(categoryApi + "/" + $scope.listCategory[index].id)
+                                .then(function (response) {
+                                    console.log(response);
+                                });
+                        }
+
+                        $scope.btnUpdateOnClick = function (event, index) {
+                            event.preventDefault();
+
+                            const c = $scope.listCategory[index];
+                            $scope.category.name = c.name;
+                            $scope.category.status = c.status;
+                            $scope.updateIndex = index;
+                        }
+
+
+                    }
+
+                    app.controller("category_controller", categoryController);
+                </script>
+
+
+
+                <script src="/js/bootstrap.min.js"></script>
+                <script src="/js/popper.js"></script>
+                <script src="/js/jquery.min.js"></script>
 </body>
 
 </html>
