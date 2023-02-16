@@ -29,24 +29,21 @@
       "name": "Quần",
       "status": true,
       "id": 1
+    },
+    {
+      "name": "Ao",
+      "status": true,
+      "id": 2
     }
   ],
   "products": [
     {
-      "name": "test 1",
+      "name": "test 222",
       "price": 220,
-      "status": true,
+      "status": false,
       "category": "1",
       "image": "",
       "id": 1
-    },
-    {
-      "name": "tesst 2",
-      "price": 3330,
-      "status": true,
-      "category": "1",
-      "image": "",
-      "id": 2
     },
     {
       "name": "test 3",
@@ -57,12 +54,12 @@
       "id": 3
     },
     {
-      "name": "test 4",
-      "price": 33,
-      "status": false,
-      "category": "1",
+      "name": "Ao dai",
+      "price": 2220,
+      "status": true,
+      "category": "2",
       "image": "",
-      "id": 4
+      "id": 5
     }
   ]
 }

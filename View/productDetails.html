@@ -10,15 +10,17 @@
     <link rel="stylesheet" href="/css/brands.css">
     <link rel="stylesheet" href="/css/solid.css">
     <link rel="stylesheet" href="/css/v5-font-face.css">
-    <link rel="stylesheet" href="/productDetails.css">
+    <link rel="stylesheet" href="/View/productDetails.css">
 </head>
 
-<body>
+<body ng-app ="myapp">
     <div class="container">
         <!-- header -->
         <header class="d-flex align-items-center">
             <div class="col-2 mt-3">
-                <img class="img-fluid" src="/img/logo.png" alt="Logo">
+                <a class="navbar-brand col-2 fw-bold " href="#index">
+                    <img class="img-fluid" src="/img/logo.png" alt="Logo" >
+                </a>
             </div>
             <form class="d-flex col-4 mt-3" role="search">
                 <input class="form-control" type="search" placeholder="Phiên bản giới hạn mùa lễ hội"
