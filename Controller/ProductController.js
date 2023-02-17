@@ -3,35 +3,21 @@ function product($scope, $http) {
 
     $scope.updateIndex = -1;
 
-    $scope.convert = "";
-
-
-    $scope.input = function () {
-
-        const input = document.querySelector('input[type="file"]');
-        const file = input.files[0];
-
-        // Tạo một đối tượng FileReader để đọc nội dung của tệp.
-        const reader = new FileReader();
-
-        // Đăng ký một sự kiện 'load' với đối tượng reader để thực hiện các hành động sau khi tệp đã được đọc.
-        reader.addEventListener('load', (event) => {
-            // Lấy nội dung của tệp dưới dạng chuỗi base64.
-            const base64String = event.target.result;
-            $scope.convert = base64String;
-        });
-
-        // Đọc tệp dưới dạng URL dữ liệu và kích hoạt sự kiện 'load' khi đọc tệp hoàn tất.
-        reader.readAsDataURL(file);
-
-    }
 
     $scope.product = {
         name: "",
         price: 0,
         status: true,
         category: 1,
-        image: $scope.convert
+        image: ""
+    };
+
+
+    $scope.showImage = function () {
+        const fullPath = document.getElementById("myFileInput").value;
+
+        $scope.product.image = fullPath.split('\\').pop();;
+        $scope.$apply();
     };
 
     function clear() {
@@ -44,10 +30,11 @@ function product($scope, $http) {
         };
     }
 
-
     $scope.btnUpdateOnClick = function (event, index) {
         event.preventDefault();
+        var fullPath = document.getElementById("myFileInput").value;
 
+        $scope.product.image = fullPath.split('\\').pop();;
         const p = $scope.listProduct[index];
         $scope.product.name = p.name;
         $scope.product.price = p.price;
@@ -66,6 +53,9 @@ function product($scope, $http) {
     function post() {
         $http.post(productApi, $scope.product)
             .then(function (response) {
+                var fullPath = document.getElementById("myFileInput").value;
+
+                $scope.product.image = fullPath.split('\\').pop();;
                 $scope.listProduct.push($scope.product);
                 clear();
             });
@@ -104,12 +94,12 @@ function product($scope, $http) {
         $scope.categories = response.data.categories;
     });
 
-    $scope.getNameByID = function (categoryID) {
-        var category = $scope.categories.find(function (category) {
-            return category.id === categoryID;
-        });
-        return category ? category.name : '';
-    };
+
+
+    $scope.clear = function (event) {
+        event.preventDefault();
+        clear();
+    }
 
 }
 
@@ -120,4 +110,19 @@ function getListCategory($scope, $http) {
     });
 }
 
+function previewFile() {
+    const preview = document.querySelector('img');
+    const file = document.querySelector('input[type=file]').files[0];
+    const reader = new FileReader();
+
+    reader.addEventListener("load", () => {
+        // convert image file to base64 string
+        preview.src = reader.result;
+        return reader.result;
+    }, false);
+
+    if (file) {
+        reader.readAsDataURL(file);
+    }
+}
 

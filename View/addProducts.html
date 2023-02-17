@@ -1,10 +1,10 @@
-<div  ng-controller="product_controller">
+<div ng-controller="product_controller">
     <h2 class="text-center">Add Product</h2>
     <div class="col-8 offset-2">
         <form name="form_product">
             <div class="mb-3">
                 <label for="productName" class="form-label">Product Name</label>
-                <input type="text" class="form-control" id="productName" ng-model="product.name">
+                <input type="text" class="form-control" id="name" ng-model="product.name">
             </div>
             <div class="mb-3">
                 <label for="price" class="form-label">Price</label>
@@ -20,22 +20,43 @@
                 </select>
             </div>
             <div class="mb-3">
-                <label for="image" class="form-label">Product Image</label>
-                <input type="file" class="form-control" id="image" ng-model="product.image" >
+                <label class="form-label">Product Image</label>
+                <input type="file" class="form-control" ng-model-options="{updateOn: 'blur'}" onchange="previewFile()" id="myFileInput"  />
+                <!-- Button trigger modal -->
+                <button ng-click="showImage()" type="button" class="btn btn-primary mt-2 col-4 offset-4"
+                    data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Review image
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel"><input type="text"
+                                        ng-model="product.image"></h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body text-center">
+                                <img src="" height="200" alt="Image preview" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="row">
                 <div class="form-check col-6">
-                    <input class="form-check-input ms-5" type="radio" name="flexRadioDefault"
-                        id="flexRadioDefault1" ng-model="product.status" ng-checked="product.status == true"
-                        required>
+                    <input class="form-check-input ms-5" value="true" type="radio" name="flexRadioDefault" id="rdoTrue"
+                        ng-model="status" ng-checked="product.status == true" required>
                     <label class="form-check-label ms-2" for="flexRadioDefault1">
                         Đang hoạt động
                     </label>
                 </div>
                 <div class="form-check col-6">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault"
-                        id="flexRadioDefault2" checked ng-model="product.status"
-                        ng-checked="product.status == false" required>
+                    <input class="form-check-input" value="false" type="radio" name="flexRadioDefault" id="rdoFalse"
+                        checked ng-model="product.status" ng-checked="status == false" required>
                     <label class="form-check-label" for="flexRadioDefault2">
                         Ngừng hoạt động
                     </label>
@@ -44,6 +65,7 @@
             <div class="row">
                 <button class="btn btn-success mt-4 col-4 offset-4" ng-click="save($event)">Add
                     Product</button>
+                <button class="btn btn-danger mt-4 col-2 offset-2" ng-click="clear($event)">Clear Form</button>
             </div>
         </form>
     </div>
@@ -65,12 +87,11 @@
                     <td>{{ $index+1 }}</td>
                     <td>{{ product.name }}</td>
                     <td>{{ product.price }}</td>
-                    <td>{{ product.category }}</td>
+                    <td>{{ product.category}}</td>
                     <td>{{ product.status ? 'Đang Hoạt Động' : 'Ngừng Hoạt Động' }}</td>
                     <td>{{ product.image}}</td>
                     <td>
-                        <button class="btn btn-primary" href="#"
-                            ng-click="btnUpdateOnClick($event, $index)">
+                        <button class="btn btn-primary" href="#" ng-click="btnUpdateOnClick($event, $index)">
                             Update
                         </button>
                     </td>

@@ -41,43 +41,79 @@
   ],
   "categories": [
     {
-      "name": "Ao",
+      "name": "Dưỡng da",
+      "status": true,
       "id": 1
     },
     {
-      "id": 2,
-      "name": "Quan",
-      "status": true
+      "name": "Mặt nạ",
+      "status": true,
+      "id": 2
     },
     {
-      "name": "áo",
+      "name": "Trang điểm",
       "status": true,
       "id": 3
+    },
+    {
+      "name": "Chăm sóc cơ thể",
+      "status": true,
+      "id": 4
+    },
+    {
+      "name": "Chống nắng",
+      "status": true,
+      "id": 5
     }
   ],
   "products": [
     {
-      "name": "Ao 7",
-      "price": 3000,
+      "name": "Dưỡng da 1",
+      "price": 220,
       "status": true,
-      "category": 1,
-      "image": "\\img\\p1.jpg",
+      "category": "1",
+      "image": "fb.png",
       "id": 1
     },
     {
-      "id": 2,
-      "name": "Ao 2",
-      "price": 5000,
+      "name": "Dưỡng da 2",
+      "price": 433,
       "status": true,
-      "category": 1,
-      "image": ""
+      "category": "1",
+      "image": "p1.2.jpg",
+      "id": 2
     },
     {
-      "name": "hehe",
-      "price": 8888,
-      "category": 1,
-      "image": "",
-      "id": 9
+      "name": "Mặt nạ 1",
+      "price": 222,
+      "status": true,
+      "category": "2",
+      "image": "p1.2.jpg",
+      "id": 3
+    },
+    {
+      "name": "Trang điểm 1",
+      "price": 33,
+      "status": true,
+      "category": "3",
+      "image": "p1.jpg",
+      "id": 4
+    },
+    {
+      "name": "Chăm sóc cơ thể 1",
+      "price": 333,
+      "status": true,
+      "category": "4",
+      "image": "p1.jpg",
+      "id": 5
+    },
+    {
+      "name": "Chống nắng 1",
+      "price": 3330,
+      "status": true,
+      "category": "5",
+      "image": "p1.2.jpg",
+      "id": 6
     }
   ]
 }

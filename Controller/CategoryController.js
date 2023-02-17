@@ -63,11 +63,15 @@ function category($scope, $http) {
 
     $scope.delete = function (event, index) {
         event.preventDefault();
-
-        $http.delete(category + "/" + $scope.listCategory[index].id)
+        $http.delete(categoryApi + "/" + $scope.listCategory[index].id)
             .then(function (response) {
                 $scope.listCategory.splice(index, 1);
             });
+    }
+
+    $scope.clear = function (event) {
+        event.preventDefault();
+        clear();
     }
 
 }
