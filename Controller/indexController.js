@@ -1,4 +1,5 @@
 var app = angular.module("myapp", ["ngRoute"]);
+
 app.config(function ($routeProvider, $locationProvider) {
     //inject $locationProvider service
     $locationProvider.hashPrefix(""); // add configuration
@@ -10,7 +11,7 @@ app.config(function ($routeProvider, $locationProvider) {
       })
       .when("/product", {
         templateUrl: "/View/Product.html",
-        // controller: "addCategoryController", // remove or add a controller here
+        controller: "productController", // remove or add a controller here
       })
       .when("/introduce", {
         templateUrl: "/View/Introduce.html",
@@ -22,7 +23,7 @@ app.config(function ($routeProvider, $locationProvider) {
       })
       .when("/login", {
         templateUrl: "/View/FormLogin.html",
-        // controller: "addCategoryController", // remove or add a controller here
+        controller: "loginCtrl", // remove or add a controller here
       })
       .when("/shoppingCart", {
         templateUrl: "/View/shoppingCart.html",
@@ -37,8 +38,9 @@ app.config(function ($routeProvider, $locationProvider) {
             redirectTo: "/index"
         });
 
-      // $locationProvider.html5Mode(true);
+
 });
+
 
 
       

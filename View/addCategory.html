@@ -1,202 +1,61 @@
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/View/addProduct.css">
-</head>
-
-<body ng-app="category_module">
-    <div class="container-fluid">
-        <div class="row">
-            <!-- Sidebar -->
-            <div class="col-md-3 col-lg-2 d-flex">
-                <nav class="navbar navbar-expand-lg navbar-dark flex-column" style="background-color:#6E6A6B;">
-                    <div class="container-fluid">
-                        <a class="navbar-brand" href="#">Trang chủ</a>
-                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
-                            aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                            <ul class="navbar-nav flex-column">
-                                <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="#">Admin</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Sản phẩm</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Thể loại</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </nav>
+<div  ng-controller="category_controller">
+    <h2 class="text-center">Add Category</h2>
+    <div class="col-8 offset-2">
+        <form name="form_category">
+            <div class="mb-3">
+                <label for="categoryName" class="form-label">Category Name</label>
+                <input type="text" class="form-control" id="categoryName" ng-model="category.name">
             </div>
 
-
-            <!-- Nội dung chính -->
-            <div class=" row col-md-9 col-lg-10  container-fluid">
-                <h1 class="text-center"> Add Category</h1>
-                <div ng-controller="category_controller">
-                    <form method="" action="" name="form_category">
-                        <div class="mt-2">
-                            <label>Name</label>
-                            <input type="text" name="name" class="form-control" ng-model="category.name" required />
-                            <span class="text-danger"
-                                ng-show="form_category.name.$invalid && form_category.name.$touched">
-                                Không được để trống
-                            </span>
-                        </div>
-                        <div class="mt-2">
-                            <label>Status</label>
-                            <div>
-                                <input type="radio" name="status" class="form-check-inline" value="false"
-                                    ng-model="category.status" ng-checked="category.status == false" required />
-                                <label>Không hoạt động</label>
-                                <input type="radio" name="status" class="form-check-inline" value="true"
-                                    ng-model="category.status" ng-checked="category.status == true" required />
-                                <label>Đang hoạt động</label>
-                            </div>
-                        </div>
-
-                        <button class="btn btn-primary mt-2" ng-click="save($event)">
-                            Submit
-                        </button>
-
-                        <button class="btn btn-secondary mt-2" ng-click="clear($event)">
-                            Clear
-                        </button>
-                    </form>
-                    <table class="table mt-4">
-                        <thead>
-                            <tr>
-                                <th>STT</th>
-                                <th>Name</th>
-                                <th>Status</th>
-                                <th colspan="2">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr ng-repeat="category in listCategory">
-                                <td>{{ $index }}</td>
-                                <td>{{ category.name }}</td>
-                                <td>{{ category.status }}</td>
-                                <td>
-                                    <button class="btn btn-primary" href="#"
-                                        ng-click="btnUpdateOnClick($event, $index)">
-                                        Update
-                                    </button>
-                                </td>
-                                <td>
-                                    <button class="btn btn-danger" ng-click="btnDeleteOnClick($event, $index)" href="#">
-                                        Delete
-                                    </button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+            <div class="row">
+                <div class="form-check col-6">
+                    <input class="form-check-input ms-5" type="radio" name="flexRadioDefault" id="flexRadioDefault1"
+                        ng-model="category.status" ng-checked="category.status == true" required>
+                    <label class="form-check-label ms-2" for="flexRadioDefault1">
+                        Đang hoạt động
+                    </label>
                 </div>
-
-                <script src="js/angular.min.js"></script>
-                <script>
-                    const app = angular.module("category_module", []);
-                    function categoryController($scope, $http) {
-                        // Nếu updateIndex == -1 -> Thêm mới, còn nếu updateIndex >= 0 -> Cập nhật
-                        $scope.updateIndex = -1;
-                        $scope.category = {
-                            name: "",
-                            status: true
-                        };
-
-                        $scope.listCategory = [
-                            { id: 1, name: "Áo Nam", status: true },
-                            { id: 2, name: "Áo Nữ", status: true },
-                            { id: 3, name: "Áo Trẻ em", status: true },
-                        ];
-
-                        const categoryApi = "http://localhost:3000/categories";
-                        $http.get(categoryApi)
-                            .then(function (response) {
-                                $scope.listCategory = response.data;
-                            });
-
-                        function them() {
-                            $http.post(categoryApi, $scope.category)
-                                .then(function (response) {
-                                    console.log(response);
-                                });
-                            $scope.listCategory.push($scope.category);
-
-                        }
-
-                        function sua() {
-                            $http.put(categoryApi + "/" + $scope.listCategory[$scope.updateIndex].id, $scope.category)
-                                .then(function (response) {
-                                    console.log(response);
-                                });
-                            // $scope.listProduct[$scope.updateIndex] = $scope.product;
-                            $scope.listCategory[$scope.updateIndex] = Object.assign({}, $scope.category);
-                        }
-
-                        $scope.clear = function (event) {
-                            event.preventDefault();
-                            $scope.product = {
-                                name: "",
-                                price: 0,
-                                status: true,
-                                category: 1
-                            };
-                            $scope.updateIndex = -1;
-                        }
-
-                        $scope.save = function (event) {
-                            // Chặn hành động mặc định của form (sự kiện submit sẽ gây tải lại page)
-                            // console.log(event)
-                            event.preventDefault();
-
-                            if ($scope.updateIndex == -1) {
-                                them();
-
-                            } else {
-                                sua();
-
-                            }
-                        }
-
-                        $scope.btnDeleteOnClick = function (event, index) {
-                            event.preventDefault();
-                            $http.delete(categoryApi + "/" + $scope.listCategory[index].id)
-                                .then(function (response) {
-                                    console.log(response);
-                                });
-                        }
-
-                        $scope.btnUpdateOnClick = function (event, index) {
-                            event.preventDefault();
-
-                            const c = $scope.listCategory[index];
-                            $scope.category.name = c.name;
-                            $scope.category.status = c.status;
-                            $scope.updateIndex = index;
-                        }
-
-
-                    }
-
-                    app.controller("category_controller", categoryController);
-                </script>
-
-
-
-                <script src="/js/bootstrap.min.js"></script>
-                <script src="/js/popper.js"></script>
-                <script src="/js/jquery.min.js"></script>
-</body>
-
-</html>
+                <div class="form-check col-6">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked
+                        ng-model="category.status" ng-checked="category.status == false" required>
+                    <label class="form-check-label" for="flexRadioDefault2">
+                        Ngừng hoạt động
+                    </label>
+                </div>
+            </div>
+            <div class="row">
+                <button class="btn btn-success mt-4 col-4 offset-4" ng-click="save($event)">Add
+                    Category</button>
+            </div>
+        </form>
+    </div>
+    <div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>STT</th>
+                    <th>Name Category</th>
+                    <th>Status</th>
+                    <th colspan="2">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="category in listCategory">
+                    <td>{{ $index+1 }}</td>
+                    <td>{{ category.name }}</td>
+                    <td>{{ category.status ? 'Đang Hoạt Động' : 'Ngừng Hoạt Động' }}</td>
+                    <td>
+                        <button class="btn btn-primary" href="#" ng-click="btnUpdateOnClick($event, $index)">
+                            Update
+                        </button>
+                    </td>
+                    <td>
+                        <button class="btn btn-danger" ng-click="delete($event, $index)" href="#">
+                            Delete
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

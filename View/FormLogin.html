@@ -1,19 +1,4 @@
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" href="/css/bootstrap.min.css">
-  <link rel="stylesheet" href="/css/fontawesome.css">
-  <link rel="stylesheet" href="/css/brands.css">
-  <link rel="stylesheet" href="/css/solid.css">
-  <link rel="stylesheet" href="/css/v5-font-face.css">
-  <link rel="stylesheet" href="/View/FormLogin.css">
-</head>
-
-<body ng-app ="myapp">
+<div ng-controller="loginCtrl">
   <h2 class="mt-4 container">
     Đăng nhập hoặc đăng ký thành viên
   </h2>
@@ -25,16 +10,18 @@
           <h3>Đăng nhập thành viên</h3>
           <div class="input-group mb-3 pe-5">
             <input type="text" class="form-control" placeholder="ex: 0582434619/phamlequyenanh1308@gmail.com"
-              aria-label="Username">
+              aria-label="Username" ng-model="username">
+
           </div>
           <div class="input-group mb-3 pe-5">
-            <input type="password" class="form-control" placeholder="Vui lòng nhập mật khẩu" aria-label="Password">
+            <input type="password" class="form-control" placeholder="Vui lòng nhập mật khẩu" aria-label="Password"
+              ng-model="password">
           </div>
           <p class="float-end">
             <a href="#" class="text-success text-decoration-none pe-5 " data-bs-toggle="modal"
               data-bs-target="#exampleModal">Bạn quên mật khẩu?</a>
             <!-- Modal -->
-          <div class="modal fade"  id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
             aria-hidden="true " bsModal #myModal="bs-modal" [config]="{backdrop: 'static'}">
             <div class="modal-dialog">
               <div class="modal-content">
@@ -43,35 +30,35 @@
                     <h5 class="modal-title" id="forgotPasswordModalLabel">Quên mật khẩu</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     <div class="mb-3 form-check">
-                        <input type="checkbox" class="form-check-input" id="phone">
-                        <label class="form-check-label" for="phone">Gửi mã xác nhận qua số điện thoại</label>
+                      <input type="checkbox" class="form-check-input" id="phone">
+                      <label class="form-check-label" for="phone">Gửi mã xác nhận qua số điện thoại</label>
                     </div>
                     <div class="mb-3 form-check">
-                        <input type="checkbox" class="form-check-input" id="emailCheckbox">
-                        <label class="form-check-label" for="emailCheckbox">Gửi mã xác nhận qua email</label>
+                      <input type="checkbox" class="form-check-input" id="emailCheckbox">
+                      <label class="form-check-label" for="emailCheckbox">Gửi mã xác nhận qua email</label>
                     </div>
-                </div>
+                  </div>
                 </div>
                 <div class="modal-body">
                   <form>
                     <div class="row mb-3">
-                        <div class="col-8">
-                            <input type="email" class="form-control" placeholder="Nhập địa chỉ email">
-                        </div>
-                        <div class="col-4">
-                            <button type="button" class="btn btn-primary " (click)="myModal.hide()">Gửi</button>
-                        </div>
+                      <div class="col-8">
+                        <input type="email" class="form-control" placeholder="Nhập địa chỉ email">
+                      </div>
+                      <div class="col-4">
+                        <button type="button" class="btn btn-primary " (click)="myModal.hide()">Gửi</button>
+                      </div>
                     </div>
 
                     <div class="row mb-3">
-                        <div class="col-8">
-                            <input type="email" class="form-control" placeholder="Nhập địa chỉ email">
-                        </div>
-                        <div class="col-4">
-                            <button type="submit" class="btn btn-primary">Xác nhận</button>
-                        </div>
+                      <div class="col-8">
+                        <input type="email" class="form-control" placeholder="Nhập địa chỉ email">
+                      </div>
+                      <div class="col-4">
+                        <button type="submit" class="btn btn-primary">Xác nhận</button>
+                      </div>
                     </div>
-                </form>
+                  </form>
                 </div>
                 <div class="modal-footer">
                   <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -82,8 +69,10 @@
           </div>
           </p>
           <br>
-          <button class=" btn btn-success  w-75 h-30 mt-3 fs-4" type="submit">Đăng nhập</button>
+          <button class=" btn btn-success  w-75 h-30 mt-3 fs-4" type="submit" ng-click="login() "
+            ng-disabled="frmLogin.$invalid ">Đăng nhập</button>
           <br>
+          <div ng-if="message" class="alert {{message.type}}">{{message.text}}</div>
           <p class="fw-semibold mt-2">Đăng nhập nhanh/Đăng ký thành viên bằng tài khoản mạng xã hội:</p>
           <br>
           <a class="btn text-white  " href="#" role="button" style="background-color: #3B5998;">
@@ -109,16 +98,46 @@
           <span class="ms-3">Đăng ký ngay để mua sắm dễ dàng hơn và tận hưởng thêm nhiều ưu đãi độc quyền cho thành viên
             innisfree.</span>
           <br>
-          <button class=" btn btn-success  w-75 h-30 mt-3 " type="submit">Đăng ký</button>
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#registerModal">
+            Đăng ký tài khoản
+          </button>
+
+          <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel"
+            aria-hidden="true" ng-app="myApp" ng-controller="registerCtrl">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="registerModalLabel">Đăng ký tài khoản</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <form>
+                    <div class="mb-3">
+                      <label for="usernameInput" class="form-label">Tên đăng nhập</label>
+                      <input type="text" class="form-control" id="usernameInput" ng-model="usernameRegister">
+                    </div>
+                    <div class="mb-3">
+                      <label for="passwordInput" class="form-label">Mật khẩu</label>
+                      <input type="password" class="form-control" id="passwordInput" ng-model="passwordRegister">
+                    </div>
+                    <div class="mb-3">
+                      <label for="confirmPasswordInput" class="form-label">Xác nhận mật khẩu</label>
+                      <input type="password" class="form-control" id="confirmPasswordInput" ng-model="confirmPassword">
+                    </div>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                  <button type="button" class="btn btn-primary" ng-click="register()">Đăng ký</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
         </div>
       </div>
     </div>
   </div>
-  
-
-  <script src="/js/bootstrap.min.js"></script>
-  <script src="/js/popper.js"></script>
-  <script src="/js/jquery.min.js"></script>
-</body>
-
-</html>
+</div>

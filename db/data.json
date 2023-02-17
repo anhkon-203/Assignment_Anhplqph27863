@@ -1,0 +1,83 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "fullName": "Nguyen Ngoc Ky",
+      "numberPhone": "0962894271",
+      "password": "123456"
+    },
+    {
+      "username": "anhkon2003",
+      "password": "123456",
+      "id": 2
+    },
+    {
+      "username": "anhkon2003a",
+      "password": "123456",
+      "id": 3
+    },
+    {
+      "username": "anhkon2003ab",
+      "password": "123456",
+      "id": 4
+    }
+  ],
+  "carts": [
+    {
+      "id": 1,
+      "idUser": 1,
+      "idProduct": 1,
+      "quantity": 5
+    }
+  ],
+  "bills": [
+    {
+      "id": 1,
+      "idUser": 1,
+      "idProduct": 1,
+      "quantity": 5,
+      "status": 1
+    }
+  ],
+  "categories": [
+    {
+      "name": "Ao",
+      "id": 1
+    },
+    {
+      "id": 2,
+      "name": "Quan",
+      "status": true
+    },
+    {
+      "name": "áo",
+      "status": true,
+      "id": 3
+    }
+  ],
+  "products": [
+    {
+      "name": "Ao 7",
+      "price": 3000,
+      "status": true,
+      "category": 1,
+      "image": "\\img\\p1.jpg",
+      "id": 1
+    },
+    {
+      "id": 2,
+      "name": "Ao 2",
+      "price": 5000,
+      "status": true,
+      "category": 1,
+      "image": ""
+    },
+    {
+      "name": "hehe",
+      "price": 8888,
+      "category": 1,
+      "image": "",
+      "id": 9
+    }
+  ]
+}

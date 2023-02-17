@@ -1,0 +1,78 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-file-upload/2.6.1/angular-file-upload.min.js"></script>
+</head>
+
+<body ng-app="product_module">
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-md-3 col-lg-2 text-center text-light" style="background-color:#6E6A6B;">
+                <div class="row mt-5">
+                    <h2>Admin</h2>
+                </div>
+                <div class="row mt-5">
+                    <a class="nav-link" href="#addProduct">Sản phẩm</a>
+                </div>
+                <div class="row mt-5">
+                    <a class="nav-link" href="#addCategory">Thể loại</a>
+                </div>
+            </div>
+
+
+            <!-- Nội dung chính -->
+            <div ng-view class=" row col-md-9 col-lg-10  container-fluid" ng-controller="product_controller"></div>
+        </div>
+    </div>
+
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/popper.min.js"></script>
+    <script src="/js/jquery.min.js"></script>
+ <script src=""></script>
+
+
+    <script src="/js/angular.min.js"></script>
+    <script src="/js/angular-route.js"></script>
+    <script src="/Controller/ProductController.js"></script>
+    <script src="/Controller/CategoryController.js"></script>
+
+    <script>
+
+        const app = angular.module("product_module", ["ngRoute"]);
+
+        app.controller("product_controller", product);
+
+        app.controller("category_getList", getListCategory);
+
+        app.controller("category_controller", category)
+
+        app.config(function ($routeProvider, $locationProvider) {
+            //inject $locationProvider service
+            $locationProvider.hashPrefix(""); // add configuration
+            $routeProvider
+                // menu
+                .when("/addProduct", {
+                    templateUrl: "/View/addProducts.html",
+
+                })
+                .when("/addCategory", {
+                    templateUrl: "/View/addCategory.html",
+
+                })
+                .otherwise(
+                    {
+                        redirectTo: "/addProduct"
+                    });
+
+
+        });
+    </script>
+</body>
+
+</html>
