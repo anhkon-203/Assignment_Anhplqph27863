@@ -33,6 +33,11 @@ app.config(function ($routeProvider, $locationProvider) {
         templateUrl: "/View/purchasedProducts.html",
         // controller: "addCategoryController", // remove or add a controller here
       })
+      .when("/products/:id", {
+        templateUrl: "/View/productDetails.html",
+        controller: "productDetailController", // remove or add a controller here
+      })
+      
       .otherwise(
         {
             redirectTo: "/index"

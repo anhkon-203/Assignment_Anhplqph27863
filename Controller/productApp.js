@@ -24,3 +24,14 @@ app.controller('productController', function($scope, $http) {
     $scope.selectedCategory = category;
   };
 });
+app.controller('productDetailController', function($scope, $http, $routeParams) {
+  var productId = $routeParams.productId;
+  var id = $routeParams.id;
+  $http.get('http://localhost:3000/products/' + id).then(function(response) {
+    $scope.product = response.data;
+  });
+});
+
+
+
+// Controller của trang chi tiết sản phẩm

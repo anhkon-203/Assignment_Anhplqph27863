@@ -1,25 +1,10 @@
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/fontawesome.css">
-    <link rel="stylesheet" href="/css/brands.css">
-    <link rel="stylesheet" href="/css/solid.css">
-    <link rel="stylesheet" href="/css/v5-font-face.css">
-    <link rel="stylesheet" href="/View/productDetails.css">
-</head>
-
-<body ng-app ="myapp">
+<body>
     <div class="container">
         <!-- header -->
         <header class="d-flex align-items-center">
             <div class="col-2 mt-3">
                 <a class="navbar-brand col-2 fw-bold " href="#index">
-                    <img class="img-fluid" src="/img/logo.png" alt="Logo" >
+                    <img class="img-fluid" src="/img/logo.png" alt="Logo">
                 </a>
             </div>
             <form class="d-flex col-4 mt-3" role="search">
@@ -47,9 +32,9 @@
 
         <!-- Navbar -->
         <div class="row mt-3 mb-3">
-            <nav class="navbar navbar-expand-md bg-body-tertiary">
+            <nav class="navbar navbar-expand-lg bg-body-tertiary">
                 <div class="container-fluid">
-                    <a class="navbar-brand" href="#">Trang chủ</a>
+                    <a class="navbar-brand" href="#index">Trang chủ</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                         data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
                         aria-label="Toggle navigation">
@@ -57,101 +42,74 @@
                     </button>
                     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                         <div class="navbar-nav">
-                            <a class="nav-link active fw-bold" aria-current="page" href="#">Sản phẩm</a>
-                            <a class="nav-link " aria-current="page" href="#">Giới thiệu cửa hàng</a>
-                            <a class="nav-link  " aria-current="page" href="#">Sự kiện</a>
+                            <a class="nav-link active fw-bold" aria-current="page" href="#product">Sản phẩm</a>
+                            <a class="nav-link" aria-current="page" href="#introduce">Giới thiệu cửa hàng</a>
+                            <a class="nav-link" aria-current="page" href="#event">Sự kiện</a>
                         </div>
                     </div>
                 </div>
             </nav>
-
         </div>
         <!-- Content -->
-        <div class="row ">
+        <!-- Trong template của trang chi tiết sản phẩm -->
+        <div class="row" ng-controller="productDetailController">
             <div class="col-6">
-                <img src="/img/p1.jpg" class="img-fluid" alt="">
-                <div id="carouselExample" class="carousel slide col-4 ">
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <img src="/img/p1.1.jpg" class=" img-fluid " id="img-zoom" alt="...">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="/img/p1.2.jpg" class=" img-fluid" alt="...">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="/img/p2.jpg" class=" img-fluid" alt="...">
-                        </div>
-                    </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample"
-                        data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample"
-                        data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </button>
-                </div>
+                <img ng-src="img/{{product.image}}" class="img-fluid" alt="">
             </div>
-
             <div class="col-6 justify-content-center">
-                <h3 class="">Bộ sản phẩm chăm sóc tóc gãy rụng innisfree My Hair Recipe Strength
-                    For Hair Roots Care & Ribbon
-                    Hair Band</h3>
-
-                <div class=" col-3 input-group mb-5  w-50 mt-5">
-                    <p class=" fw-bold">Số lượng</p>
+                <h3 class="">{{product.name}}</h3>
+                <h3 class="">${{product.price}}</h3>
+                <div class="col-3 input-group mb-5 w-50 mt-5">
+                    <p class="fw-bold">Số lượng</p>
                     <div class="input-group-prepend">
-                        <button class="btn  decrease-btn" type="button">-</button>
                     </div>
-                    <input type="text" class="form-control" value="1" id="quantity-input">
+                    <input type="text" class="form-control ms-3 me-2" value="1" id="quantity-input">
                     <div class="input-group-append">
-                        <button class="btn  increase-btn" type="button">+</button>
                     </div>
-                    <p class="  text-danger"> còn 10 sản phẩm</p>
+                    <p class="text-danger"> còn 10 sản phẩm</p>
                 </div>
-                <h3 class=" fw-bold mt-5 mb-5">500.000VND</h3>
+                <h3 class="fw-bold mt-5 mb-5"></h3>
                 <a class="btn text-white btn-success w-50 " href="#" role="button">
                     <img src="/img/icons8-shopping-cart-30.png" class="img-fluid" alt="">
                     Thêm vào giỏ hàng
                 </a>
             </div>
         </div>
+
         <h3 class=" fw-bold mt-5 text-center">Các sản phẩm tương tự</h3>
-            <div class="row mt-3">
-                <div class="card col-md col-12 ms-3">
-                    <img src="/img/b1.jpg" class="card-img-top img-fluid" alt="...">
-                    <div class="card-body">
-                        <p class="card-text text-center">SP1</p>
-                        <span class=" card text text-center fw-bold">$30</span>
-                    </div>
+        <div class="row mt-3">
+            <div class="card col-md col-12 ms-3">
+                <img src="/img/b1.jpg" class="card-img-top img-fluid" alt="...">
+                <div class="card-body">
+                    <p class="card-text text-center">SP1</p>
+                    <span class=" card text text-center fw-bold">$30</span>
                 </div>
-                <div class="card col-md col-12 ms-3">
-                    <img src="/img/b1.jpg" class="card-img-top img-fluid" alt="...">
-                    <div class="card-body">
-                        <p class="card-text text-center">SP1</p>
-                        <span class=" card text text-center fw-bold">$30</span>
-                    </div>
+            </div>
+            <div class="card col-md col-12 ms-3">
+                <img src="/img/b1.jpg" class="card-img-top img-fluid" alt="...">
+                <div class="card-body">
+                    <p class="card-text text-center">SP1</p>
+                    <span class=" card text text-center fw-bold">$30</span>
                 </div>
-                <div class="card col-md col-12 ms-3">
-                    <img src="/img/b1.jpg" class="card-img-top img-fluid" alt="...">
-                    <div class="card-body">
-                        <p class="card-text text-center">SP1</p>
-                        <span class=" card text text-center fw-bold">$30</span>
-                    </div>
+            </div>
+            <div class="card col-md col-12 ms-3">
+                <img src="/img/b1.jpg" class="card-img-top img-fluid" alt="...">
+                <div class="card-body">
+                    <p class="card-text text-center">SP1</p>
+                    <span class=" card text text-center fw-bold">$30</span>
                 </div>
-                <div class="card col-md col-12 ms-3">
-                    <img src="/img/b1.jpg" class="card-img-top img-fluid" alt="...">
-                    <div class="card-body">
-                        <p class="card-text text-center">SP1</p>
-                        <span class=" card text text-center fw-bold">$30</span>
-                    </div>
+            </div>
+            <div class="card col-md col-12 ms-3">
+                <img src="/img/b1.jpg" class="card-img-top img-fluid" alt="...">
+                <div class="card-body">
+                    <p class="card-text text-center">SP1</p>
+                    <span class=" card text text-center fw-bold">$30</span>
                 </div>
             </div>
         </div>
     </div>
-  <!-- Footer -->
+    </div>
+    <!-- Footer -->
     <footer class="row mt-5 ">
         <div class="row">
             <div>
@@ -215,34 +173,3 @@
                 </ul>
             </div>
     </footer>
-    <script>
-        const decreaseBtn = document.querySelector(".decrease-btn");
-        const increaseBtn = document.querySelector(".increase-btn");
-        const quantityInput = document.querySelector("#quantity-input");
-
-        const decreaseQuantity = function () {
-            let quantity = parseInt(quantityInput.value);
-            if (quantity > 1) {
-                quantity--;
-                quantityInput.value = quantity;
-            }
-        };
-
-        const increaseQuantity = function () {
-            let quantity = parseInt(quantityInput.value);
-            quantity++;
-            quantityInput.value = quantity;
-        };
-
-        decreaseBtn.addEventListener("click", decreaseQuantity);
-        increaseBtn.addEventListener("click", increaseQuantity);
-
-    </script>
-
-    <script src="/js/angular.min.js"></script>
-    <script src="/js/jquery.min.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
-    <script src="/js/popper.js"></script>
-</body>
-
-</html>
