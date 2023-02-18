@@ -1,15 +1,13 @@
-
 <div class="container">
     <!-- header -->
     <header class="d-flex align-items-center">
         <div class="col-2 mt-3">
             <a class="navbar-brand col-2 fw-bold " href="#index">
-                <img class="img-fluid" src="/img/logo.png" alt="Logo" >
+                <img class="img-fluid" src="/img/logo.png" alt="Logo">
             </a>
         </div>
         <form class="d-flex col-4 mt-3" role="search">
-            <input class="form-control" type="search" placeholder="Phiên bản giới hạn mùa lễ hội"
-                aria-label="Search">
+            <input class="form-control" type="search" placeholder="Phiên bản giới hạn mùa lễ hội" aria-label="Search">
         </form>
         <nav class="navbar navbar-expand-lg bg-body-tertiary col-6 d-flex justify-content-end">
             <a class="nav-link active me-3" href="#login">Đăng nhập</a>
@@ -55,33 +53,33 @@
         <span class="fw-bold text-center mb-3 mt-3">Tất cả sản phẩm</span>
     </div>
 
-    <div class="row " ng-controller="productController">
+    <div class="row" ng-controller="productController">
         <div class="col-md-2">
-            <div class="row">
-                <span class="mt-5"><a href="" class=" text-decoration-none text-black">Dưỡng da</a></span>
-                <span class="mt-5"><a href="" class=" text-decoration-none text-black">Mặt nạ</a></span>
-                <span class="mt-5"><a href="" class="text-decoration-none text-black">Chăm sóc cơ thể</a></span>
-                <span class="mt-5"><a href="" class=" text-decoration-none text-black">Trang điểm</a></span>
-                <span class="mt-5"><a href="" class=" text-decoration-none text-black">Chống nắng</a></span>
+            <div class="row" ng-repeat="category in listCategory">
+                <span class="mt-5">
+                    <a href="" class="text-decoration-none text-black"
+                        ng-click="selectedCategoryId=category.id">{{category.name}}</a>
+                </span>
             </div>
         </div>
         <div class="col-md-10">
-            <article class="col-12" >
+            <article class="col-12">
                 <div class="row">
-                    <div class="col-md-3 col-12" ng-repeat="product in listProduct">
-                      <div class="card ms-3">
-                        <img ng-src="img/{{product.image}}" class="card-img-top img-fluid" alt="...">
-                        <div class="card-body">
-                          <p class="card-text text-center">{{product.name}}</p>
-                          <span class="card text text-center fw-bold">{{product.price}}</span>
+                    <div class="col-md-3 col-12" ng-repeat="product in listProduct" ng-show="filterByCategory(product)">
+                        <div class="card ms-3">
+                            <img ng-src="img/{{product.image}}" class="card-img-top img-fluid" alt="...">
+                            <div class="card-body">
+                                <p class="card-text text-center">{{product.name}}</p>
+                                <span class="card text text-center fw-bold">{{product.price}}</span>
+                            </div>
                         </div>
-                      </div>
                     </div>
-                  </div>                  
-        </article>
+                </div>
+            </article>
+        </div>
     </div>
 </div>
-</div>
+
 <!-- Footer -->
 <footer class="row mt-5 ">
     <div class="row">
@@ -145,4 +143,5 @@
                     Tp. Hồ Chí Minh, Việt Nam.</li>
             </ul>
         </div>
+        
 </footer>
