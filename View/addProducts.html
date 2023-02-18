@@ -19,33 +19,20 @@
                     </option>
                 </select>
             </div>
+            <!-- <div class="mb-3">
+                <label class="form-label">Product Image</label>
+                <input type="file" class="form-control"  onchange="showImage()"
+                    id="myFileInput"   />
+                <input type="text" class="form-control mt-3 " disabled  ng-model="product.image">
+            </div> -->
             <div class="mb-3">
                 <label class="form-label">Product Image</label>
-                <input type="file" class="form-control" ng-model-options="{updateOn: 'blur'}" onchange="previewFile()" id="myFileInput"  />
-                <!-- Button trigger modal -->
-                <button ng-click="showImage()" type="button" class="btn btn-primary mt-2 col-4 offset-4"
-                    data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    Review image
-                </button>
-
-                <!-- Modal -->
-                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                    aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="exampleModalLabel"><input type="text"
-                                        ng-model="product.image"></h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body text-center">
-                                <img src="" height="200" alt="Image preview" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <input type="file" class="form-control" onchange="showImage()" id="myFileInput"/>
+                <input type="text" class="form-control mt-3 " ng-model="product.image" id="myTextInput"/>
+                <button class="btn btn-success mt-3" ng-click="showUrl()">Show url</button>
             </div>
+        
+            
             <div class="row">
                 <div class="form-check col-6">
                     <input class="form-check-input ms-5" value="true" type="radio" name="flexRadioDefault" id="rdoTrue"

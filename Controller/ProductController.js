@@ -12,13 +12,13 @@ function product($scope, $http) {
         image: ""
     };
 
-
-    $scope.showImage = function () {
+    $scope.showUrl = function() {
         const fullPath = document.getElementById("myFileInput").value;
+        $scope.product.image = fullPath.split('\\').pop();
+        document.getElementById("imageUrlInput").value = $scope.product.image;
+      }
 
-        $scope.product.image = fullPath.split('\\').pop();;
-        $scope.$apply();
-    };
+
 
     function clear() {
         $scope.product = {
@@ -110,19 +110,4 @@ function getListCategory($scope, $http) {
     });
 }
 
-function previewFile() {
-    const preview = document.querySelector('img');
-    const file = document.querySelector('input[type=file]').files[0];
-    const reader = new FileReader();
-
-    reader.addEventListener("load", () => {
-        // convert image file to base64 string
-        preview.src = reader.result;
-        return reader.result;
-    }, false);
-
-    if (file) {
-        reader.readAsDataURL(file);
-    }
-}
 

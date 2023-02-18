@@ -76,72 +76,22 @@
         <h2>Sản phẩm bán chạy nhất</h2>
     </div>
 
-    <div class="row">
+    <div class="row" ng-controller="productController">
         <article class="col-12">
             <div class="row">
-                <div class="card col-md col-12 ms-3">
-                    <img src="/img/b1.jpg" class="card-img-top img-fluid" alt="...">
-                    <div class="card-body">
-                        <p class="card-text text-center">SP1</p>
-                        <h1 class="card-text text-center">$30</h1>
-                    </div>
-                </div>
-                <div class="card col-md col-12 ms-3">
-                    <img src="/img/b1.jpg" class="card-img-top img-fluid" alt="...">
-                    <div class="card-body">
-                        <p class="card-text text-center">SP1</p>
-                        <h1 class="card-text text-center">$30</h1>
-                    </div>
-                </div>
-                <div class="card col-md col-12 ms-3">
-                    <img src="/img/b1.jpg" class="card-img-top img-fluid" alt="...">
-                    <div class="card-body">
-                        <p class="card-text text-center">SP1</p>
-                        <h1 class="card-text text-center">$30</h1>
-                    </div>
-                </div>
-                <div class="card col-md col-12 ms-3">
-                    <img src="/img/b1.jpg" class="card-img-top img-fluid" alt="...">
-                    <div class="card-body">
-                        <p class="card-text text-center">SP1</p>
-                        <h1 class="card-text text-center">$30</h1>
-                    </div>
-                </div>
-
-            </div>
-            <div class="row mt-3">
-                <div class="card col-md col-12 ms-3">
-                    <img src="/img/b1.jpg" class="card-img-top img-fluid" alt="...">
-                    <div class="card-body">
-                        <p class="card-text text-center">SP1</p>
-                        <h1 class="card-text text-center">$30</h1>
-                    </div>
-                </div>
-                <div class="card col-md col-12 ms-3">
-                    <img src="/img/b1.jpg" class="card-img-top img-fluid" alt="...">
-                    <div class="card-body">
-                        <p class="card-text text-center">SP1</p>
-                        <h1 class="card-text text-center">$30</h1>
-                    </div>
-                </div>
-                <div class="card col-md col-12 ms-3">
-                    <img src="/img/b1.jpg" class="card-img-top img-fluid" alt="...">
-                    <div class="card-body">
-                        <p class="card-text text-center">SP1</p>
-                        <h1 class="card-text text-center">$30</h1>
-                    </div>
-                </div>
-                <div class="card col-md col-12 ms-3">
-                    <img src="/img/b1.jpg" class="card-img-top img-fluid" alt="...">
-                    <div class="card-body">
-                        <p class="card-text text-center">SP1</p>
-                        <h1 class="card-text text-center">$30</h1>
+                <div class=" col-md col-12 " ng-repeat="product in listProduct | limitTo:4 " >
+                    <div class="card">
+                        <img ng-src="img/{{product.image}}" class="card-img-top img-fluid" alt="...">
+                        <div class="card-body">
+                            <a href="" class="text-decoration-none fw-bold text-dark"><p class="card-text text-center ">{{product.name}}</p></a>
+                            <span class="card text text-center fw-bold">${{product.price}}</span>
+                        </div>
                     </div>
                 </div>
             </div>
-    </div>
+ 
     </article>
-
+</div>
     <div class="row text-center mt-3 mb-4">
         <h2>Sản phẩm mới nhất</h2>
     </div>
@@ -149,69 +99,19 @@
     <div class="row">
         <article class="col-12 ">
             <div class="row">
-                <div class="card col-md col-12 ms-3 ">
-                    <img src="/img/b1.jpg" class="card-img-top img-fluid" alt="...">
-                    <div class="card-body">
-                        <p class="card-text text-center">SP1</p>
-                        <h1 class="card-text text-center">$30</h1>
+                <div class=" col-md-3 col-6" ng-repeat="product in listProduct | limitTo:8 " >
+                    <div class="card ">
+                        <img ng-src="img/{{product.image}}" class="card-img-top img-fluid" alt="...">
+                        <div class="card-body">
+                            <a href="" class="text-decoration-none fw-bold text-dark"><p class="card-text text-center ">{{product.name}}</p></a>
+                            <span class="card text text-center fw-bold">${{product.price}}</span>
+                        </div>
                     </div>
                 </div>
-                <div class="card col-md col-12 ms-3">
-                    <img src="/img/b1.jpg" class="card-img-top img-fluid" alt="...">
-                    <div class="card-body">
-                        <p class="card-text text-center">SP1</p>
-                        <h1 class="card-text text-center">$30</h1>
-                    </div>
-                </div>
-                <div class="card col-md col-12 ms-3">
-                    <img src="/img/b1.jpg" class="card-img-top img-fluid" alt="...">
-                    <div class="card-body">
-                        <p class="card-text text-center">SP1</p>
-                        <h1 class="card-text text-center">$30</h1>
-                    </div>
-                </div>
-                <div class="card col-md col-12 ms-3">
-                    <img src="/img/b1.jpg" class="card-img-top img-fluid" alt="...">
-                    <div class="card-body">
-                        <p class="card-text text-center">SP1</p>
-                        <h1 class="card-text text-center">$30</h1>
-                    </div>
-                </div>
-
-            </div>
-            <div class="row mt-3">
-                <div class="card col-md col-12 ms-3">
-                    <img src="/img/b1.jpg" class="card-img-top img-fluid" alt="...">
-                    <div class="card-body">
-                        <p class="card-text text-center">SP1</p>
-                        <h1 class="card-text text-center">$30</h1>
-                    </div>
-                </div>
-                <div class="card col-md col-12 ms-3">
-                    <img src="/img/b1.jpg" class="card-img-top img-fluid" alt="...">
-                    <div class="card-body">
-                        <p class="card-text text-center">SP1</p>
-                        <h1 class="card-text text-center">$30</h1>
-                    </div>
-                </div>
-                <div class="card col-md col-12 ms-3">
-                    <img src="/img/b1.jpg" class="card-img-top img-fluid" alt="...">
-                    <div class="card-body">
-                        <p class="card-text text-center">SP1</p>
-                        <h1 class="card-text text-center">$30</h1>
-                    </div>
-                </div>
-                <div class="card col-md col-12 ms-3">
-                    <img src="/img/b1.jpg" class="card-img-top img-fluid" alt="...">
-                    <div class="card-body">
-                        <p class="card-text text-center">SP1</p>
-                        <h1 class="card-text text-center">$30</h1>
-                    </div>
-                </div>
-
             </div>
         </article>
     </div>
+</div>
 </div>
 <!-- Footer -->
 <footer class="row mt-5 ">

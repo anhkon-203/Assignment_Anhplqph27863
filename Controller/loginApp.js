@@ -63,7 +63,6 @@ app.controller('loginCtrl', function ($scope, $rootScope, $http) {
       $http.get('http://localhost:3000/users?username=' + $scope.usernameRegister)
         .then(function(response) {
           if (response.data.length > 0) {
-            $scope.errorMsg = "Tên đăng nhập đã tồn tại";
             alert("Tên đăng nhập đã tồn tại");
           } else {
             // Tạo mới tài khoản

@@ -7,7 +7,7 @@ app.config(function ($routeProvider, $locationProvider) {
       // menu
       .when("/index", {
         templateUrl: "/View/Index.html",
-        // controller: "addCategoryController", // remove or add a controller here
+        controller: "productController", // remove or add a controller here
       })
       .when("/product", {
         templateUrl: "/View/Product.html",

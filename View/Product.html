@@ -49,28 +49,30 @@
         </nav>
     </div>
 
-    <div class="row">
-        <span class="fw-bold text-center mb-3 mt-3">Tất cả sản phẩm</span>
+    <div class="row" >
+        <span class="fw-bold text-center mb-3 mt-3">
+            <a class="text-decoration-none text-black" href="" >Tất cả sản phẩm</a>
+          </span>
     </div>
 
-    <div class="row" ng-controller="productController">
+    <div class="row" ng-controller="productController" >
         <div class="col-md-2">
             <div class="row" ng-repeat="category in listCategory">
                 <span class="mt-5">
                     <a href="" class="text-decoration-none text-black"
-                        ng-click="selectedCategoryId=category.id">{{category.name}}</a>
+                        ng-click="selectCategory(category.id)">{{category.name}}</a>
                 </span>
             </div>
         </div>
         <div class="col-md-10">
             <article class="col-12">
                 <div class="row">
-                    <div class="col-md-3 col-12" ng-repeat="product in listProduct" ng-show="filterByCategory(product)">
+                    <div class="col-md-3 col-12" ng-repeat="product in listProduct | filter: {category: selectedCategory}" >
                         <div class="card ms-3">
                             <img ng-src="img/{{product.image}}" class="card-img-top img-fluid" alt="...">
                             <div class="card-body">
-                                <p class="card-text text-center">{{product.name}}</p>
-                                <span class="card text text-center fw-bold">{{product.price}}</span>
+                                <a href="" class="text-decoration-none fw-bold text-dark"><p class="card-text text-center ">{{product.name}}</p></a>
+                                <span class="card text text-center fw-bold">${{product.price}}</span>
                             </div>
                         </div>
                     </div>

@@ -20,6 +20,11 @@
       "username": "anhkon2003ab",
       "password": "123456",
       "id": 4
+    },
+    {
+      "username": "kynn",
+      "password": "1",
+      "id": 5
     }
   ],
   "carts": [
@@ -56,12 +61,12 @@
       "id": 3
     },
     {
-      "name": "Chăm sóc cơ thể",
+      "name": "Chống nắng",
       "status": true,
       "id": 4
     },
     {
-      "name": "Chống nắng",
+      "name": "Chăm sóc cơ thể",
       "status": true,
       "id": 5
     }
@@ -71,7 +76,7 @@
       "name": "Dưỡng da 1",
       "price": 220,
       "status": true,
-      "category": "1",
+      "category": null,
       "image": "fb.png",
       "id": 1
     },
@@ -122,6 +127,14 @@
       "category": "4",
       "image": "3463481_media_network_social_youtube_icon.png",
       "id": 7
+    },
+    {
+      "name": "Test",
+      "price": 220,
+      "status": true,
+      "category": "3",
+      "image": "b2.jpg",
+      "id": 8
     }
   ]
 }
