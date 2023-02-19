@@ -65,9 +65,10 @@ function product($scope, $http) {
         $http.put(productApi + "/" + $scope.listProduct[$scope.updateIndex].id, $scope.product)
             .then(function (response) {
                 $scope.listProduct[$scope.updateIndex] = Object.assign({}, $scope.product);
-                clear
+                clear();
             });
     }
+    
 
     $scope.save = function (event) {
         event.preventDefault();

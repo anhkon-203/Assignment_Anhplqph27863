@@ -45,9 +45,10 @@ function category($scope, $http) {
         $http.put(categoryApi + "/" + $scope.listCategory[$scope.updateIndex].id, $scope.category)
             .then(function (response) {
                 $scope.listCategory[$scope.updateIndex] = Object.assign({}, $scope.category);
-                clear
+                clear();
             });
     }
+    
 
     $scope.save = function (event) {
         event.preventDefault();

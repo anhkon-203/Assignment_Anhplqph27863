@@ -17,16 +17,15 @@
                     <p class="fw-bold">Số lượng</p>
                     <div class="input-group-prepend">
                     </div>
-                    <input type="text" class="form-control ms-3 me-2" value="1" id="quantity-input">
+                    <input type="text" class="form-control ms-3 me-2" value="1" id="quantity-input" ng-model="quantity">
                     <div class="input-group-append">
                     </div>
                     <p class="text-danger"> còn 10 sản phẩm</p>
                 </div>
-                <h3 class="fw-bold mt-5 mb-5"></h3>
-                <a class="btn text-white btn-success w-50" href="#" role="button" ng-click="addToCart(product, quantity)">
-                    <img src="/img/icons8-shopping-cart-30.png" class="img-fluid" alt="">
-                    Thêm vào giỏ hàng
-                  </a>
+                <h3 class="fw-bold mt-3 mb-3"></h3>
+                  <button class="btn  btn-success  " ng-click="addToCart(product, quantity, $event)">
+                     <img src="/img/cart.svg" alt=""> Thêm vào giỏ hàng
+                  </button>
                   
             </div>
         </div>

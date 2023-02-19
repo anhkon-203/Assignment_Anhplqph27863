@@ -2,18 +2,18 @@ var app = angular.module("myapp", ["ngRoute"]);
 app.run(function ($rootScope, $location, $anchorScroll) {
   // Bắt sự kiện khi chuyển page
   $rootScope.$on('$routeChangeSuccess', function (newRoute, oldRoute) {
-    // Đưa trang lên đầu
-    $anchorScroll();
+    window.scrollTo(0, 0);
   });
+  
 });
 
 app.config(function ($routeProvider, $locationProvider) {
   $locationProvider.hashPrefix("");
   $routeProvider
+
     // menu
     .when("/index", {
       templateUrl: "/View/Index.html",
-      controller: "productController",
     })
     .when("/product", {
       templateUrl: "/View/Product.html",
@@ -31,6 +31,7 @@ app.config(function ($routeProvider, $locationProvider) {
     })
     .when("/shoppingCart", {
       templateUrl: "/View/shoppingCart.html",
+      controller: "cartController",
     })
     .when("/pushProduct", {
       templateUrl: "/View/purchasedProducts.html",

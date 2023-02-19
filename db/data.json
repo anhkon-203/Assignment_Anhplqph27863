@@ -30,6 +30,31 @@
       "username": "test",
       "password": "123456",
       "id": 6
+    },
+    {
+      "username": "test",
+      "password": "123456",
+      "id": 7
+    },
+    {
+      "username": "test",
+      "password": "123456",
+      "id": 8
+    },
+    {
+      "username": "anhkon203",
+      "password": "123456",
+      "id": 9
+    },
+    {
+      "username": "1",
+      "password": "1",
+      "id": 10
+    },
+    {
+      "username": "2",
+      "password": "2",
+      "id": 11
     }
   ],
   "carts": [
@@ -37,7 +62,133 @@
       "id": 1,
       "idUser": 1,
       "idProduct": 1,
-      "quantity": 5
+      "quantity": 10
+    },
+    {
+      "idUser": 2,
+      "idProduct": 2,
+      "quantity": "2",
+      "id": 2
+    },
+    {
+      "idUser": 2,
+      "idProduct": 2,
+      "quantity": "2",
+      "id": 3
+    },
+    {
+      "idUser": 2,
+      "idProduct": 2,
+      "quantity": "2",
+      "id": 4
+    },
+    {
+      "idUser": 2,
+      "idProduct": 5,
+      "quantity": "2",
+      "id": 5
+    },
+    {
+      "idUser": 3,
+      "idProduct": 3,
+      "quantity": "3",
+      "id": 6
+    },
+    {
+      "idUser": 2,
+      "idProduct": 2,
+      "quantity": "3",
+      "id": 7
+    },
+    {
+      "idUser": 2,
+      "idProduct": 2,
+      "quantity": "33",
+      "id": 8
+    },
+    {
+      "idUser": 2,
+      "idProduct": 7,
+      "quantity": "3",
+      "id": 9
+    },
+    {
+      "idUser": 2,
+      "idProduct": 7,
+      "quantity": "3",
+      "id": 10
+    },
+    {
+      "idUser": 2,
+      "idProduct": 7,
+      "quantity": "3",
+      "id": 11
+    },
+    {
+      "idUser": 2,
+      "idProduct": 1,
+      "quantity": "2",
+      "id": 12
+    },
+    {
+      "idUser": 2,
+      "idProduct": 1,
+      "quantity": "2",
+      "id": 13
+    },
+    {
+      "idUser": 2,
+      "idProduct": 5,
+      "quantity": "1",
+      "id": 14
+    },
+    {
+      "idUser": 3,
+      "idProduct": 2,
+      "quantity": "2",
+      "id": 15
+    },
+    {
+      "idUser": 3,
+      "idProduct": 3,
+      "quantity": "2",
+      "id": 16
+    },
+    {
+      "idUser": 3,
+      "idProduct": 3,
+      "quantity": "2",
+      "id": 17
+    },
+    {
+      "idUser": 3,
+      "idProduct": 2,
+      "quantity": "3",
+      "id": 18
+    },
+    {
+      "idUser": 3,
+      "idProduct": 1,
+      "quantity": "2",
+      "id": 19
+    },
+    {
+      "idUser": 3,
+      "idProduct": 1,
+      "quantity": "2",
+      "id": 20
+    },
+    {
+      "idUser": 3,
+      "idProduct": 1,
+      "quantity": "2",
+      "id": 21
+    },
+    {
+      "idUser": 3,
+      "idProduct": 1,
+      "quantity": "2",
+      "id": 22
     }
   ],
   "bills": [
@@ -81,7 +232,7 @@
       "name": "Dưỡng da 1",
       "price": 220,
       "status": true,
-      "category": "1",
+      "category": 1,
       "image": "product1.jpg",
       "id": 1
     },
@@ -156,6 +307,14 @@
       "category": "4",
       "image": "product10.jpg",
       "id": 10
+    },
+    {
+      "name": "Dưỡng da 3",
+      "price": 220,
+      "status": true,
+      "category": "1",
+      "image": "p1.1.jpg",
+      "id": 11
     }
   ]
 }

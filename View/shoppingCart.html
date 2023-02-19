@@ -1,12 +1,12 @@
 
-    <div class="container">
+    <div class="container" ng-controller="cartController">
           <!-- header -->
     <ng-include src="'/View/header.html'"></ng-include>
 
     <!-- Navbar -->
     <ng-include src="'/View/navbar.html'"></ng-include>
         <!-- Content -->
-        <div class="card mb-2">
+        <div class="card mb-2" ng-repeat="cart in carts">
             <div class="card-header">
                 <span id="deal">Deal Sốc</span>
                 <span class="fw-bold">Mua kèm deal độc quyền</span>
@@ -15,97 +15,42 @@
             <div class="card-body">
                 <div class="row align-items-center">
                     <div class="col-1">
-                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                        <img src="/img/p1.jpg" class="img-fluid d-flex" alt="Ảnh sản phẩm">
+                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck{{$index}}">
+                        <img ng-src="img/{{products[cart.idProduct-1].image}}" class="img-fluid d-flex" alt="Ảnh sản phẩm">
                     </div>
                     <div class="col-md-3 col-7">
-                        <a href="#" class="text-decoration-none text-black" id="textProduct">Bộ sản phẩm chăm sóc tóc
-                            gãy rụng innisfree My Hair Recipe StrengthFor Hair Roots Care & RibbonHair Band</a>
+                        <a href="#" class="text-decoration-none text-black" id="textProduct">{{products[cart.idProduct-1].name}}</a>
                         <br>
                         <img src="/img/freeShip.png" class="img-fluid" alt="Miễn phí vận chuyển">
                         <br>
                         <img src="/img/7.png" class="img-fluid " alt="Miễn phí vận chuyển">
                         <span id="textProduct">7 ngày miễn phí trả hàng</span>
                     </div>
-                    <div class="col-md-2 col-3">
-                        <div class="dropdown">
-                            <button class="btn dropdown-toggle btn-sm" type="button" id="dropdownMenuButton"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                Phân loại hàng
-                            </button>
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <li><a class="dropdown-item" href="#">
-                                        <button class="btn">
-                                            Đen Trơn Thời Trang,Size 41 Nam
-                                        </button>
-                                    </a></li>
-                            </ul>
-                        </div>
-                    </div>
                     <div class="col-md-1 col-2">
-                        <span id="priceProduct" class="text-center">đ320.000</span>
+                        <span id="priceProduct" class="text-center">{{products[cart.idProduct-1].price | currency:"đ"}}</span>
                     </div>
                     <div class="col-md-2 col-3">
                         <div class="input-group">
-                            <button class="btn btn-sm decrease-btn" type="button">-</button>
-                            <input type="text" class="form-control" value="1" id="quantity-input">
-                            <button class="btn btn-sm increase-btn" type="button">+</button>
+                            <input type="text" class="form-control" value="{{cart.quantity}}" id="quantity-input" disabled>
                         </div>
                     </div>
                     <div class="col-md-1 col-2">
-                        <span class="text-center text-truncate text-danger">đ320.000</span>
+                        <span class="text-center text-truncate text-danger" >{{cart.quantity * products[cart.idProduct-1].price | currency:"đ"}}</span>
                     </div>
                     <div class="col-md-1 col-2">
                         <button class="btn btn-sm border-1">Xoá</button>
                     </div>
-                    <div class="col-md-1 col-12">
-                            <button class="btn border-1">Xoá</button>
-                            <a href="" class=" text-danger text-decoration-none">Tìm sản phẩm tương tự</a>
-                    </div>
                 </div>
             </div>
-            
-        </div>     
-        <button class="btn text-white btn-success float-end" >
-            <img src="/img/cart.svg" alt="">
-            Mua hàng
-        </button>
-
-        <!-- <a class="btn text-white btn-success w-25 float-end " href="#" role="button">
-            <img src="/img/icons8-shopping-cart-30.png" class="img-fluid" alt="">
-            Thêm vào giỏ hàng
-        </a>   -->
+        </div>
+        <div class="row col-8 offset-2">
+            <button class="btn text-white btn-success float-end" >
+                <img src="/img/cart.svg" alt="">
+                Mua hàng
+            </button>
+        </div>
+      
      </div>
   
     <!-- Footer -->
     <ng-include src="'/View/footer.html'"></ng-include>
-    </div>
-
-    <script>
-        const decreaseBtn = document.querySelector(".decrease-btn");
-        const increaseBtn = document.querySelector(".increase-btn");
-        const quantityInput = document.querySelector("#quantity-input");
-
-        const decreaseQuantity = function () {
-            let quantity = parseInt(quantityInput.value);
-            if (quantity > 1) {
-                quantity--;
-                quantityInput.value = quantity;
-            }
-        };
-
-        const increaseQuantity = function () {
-            let quantity = parseInt(quantityInput.value);
-            quantity++;
-            quantityInput.value = quantity;
-        };
-
-        decreaseBtn.addEventListener("click", decreaseQuantity);
-        increaseBtn.addEventListener("click", increaseQuantity);
-
-    </script>
-    <!-- <script src="/js/popper.js"></script> -->
-    <script src="/js/popper.min.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
-    <script src="/js/jquery.min.js"></script>
-    <script src="/js/bootstrap.bundle.min.js"></script>

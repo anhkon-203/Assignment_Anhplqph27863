@@ -33,7 +33,8 @@
         <h2>Sản phẩm bán chạy nhất</h2>
     </div>
 
-    <div class="row" ng-controller="productController">
+ <div ng-controller="productController">
+    <div class="row" >
         <article class="col-12">
             <div class="row">
                 <div class=" col-md col-12 " ng-repeat="product in listProduct | limitTo:4 " >
@@ -68,6 +69,7 @@
             </div>
         </article>
     </div>
+ </div>
 </div>
 </div>
 <!-- Footer -->

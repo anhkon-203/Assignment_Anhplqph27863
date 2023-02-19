@@ -69,7 +69,7 @@
           </div>
           </p>
           <br>
-          <button class=" btn btn-success  w-75 h-30 mt-3 fs-4" type="submit" ng-click="login() "
+          <button class=" btn btn-success  w-75 h-30 mt-3 fs-4" type="submit" ng-click="login($event) "
            >Đăng nhập</button>
           <br>
           <div ng-if="message" class="alert {{message.type}}">{{message.text}}</div>
