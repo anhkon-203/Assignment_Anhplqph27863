@@ -27,7 +27,7 @@ app.controller('productController', function($scope, $http) {
 app.controller('productDetailController', function($scope, $http, $routeParams) {
   var productId = $routeParams.productId;
   var id = $routeParams.id;
-  $http.get(productApi + id).then(function(response) {
+  $http.get(productApi + '/' + id).then(function(response) {
     $scope.product = response.data;
   });
 });
