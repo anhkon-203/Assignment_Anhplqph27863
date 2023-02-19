@@ -90,7 +90,7 @@ function product($scope, $http) {
             });
     }
 
-    $http.get("data.json").then(function (response) {
+    $http.get("/db/data.json").then(function (response) {
         $scope.categories = response.data.categories;
     });
 

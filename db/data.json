@@ -76,8 +76,8 @@
       "name": "Dưỡng da 1",
       "price": 220,
       "status": true,
-      "category": null,
-      "image": "fb.png",
+      "category": "1",
+      "image": "product1.jpg",
       "id": 1
     },
     {
@@ -93,7 +93,7 @@
       "price": 222,
       "status": true,
       "category": "2",
-      "image": "p1.2.jpg",
+      "image": "product6.jpg",
       "id": 3
     },
     {
@@ -101,40 +101,56 @@
       "price": 33,
       "status": true,
       "category": "3",
-      "image": "p1.jpg",
+      "image": "product5.jpg",
       "id": 4
     },
     {
       "name": "Chăm sóc cơ thể 1",
       "price": 333,
       "status": true,
-      "category": "4",
-      "image": "p1.jpg",
+      "category": "5",
+      "image": "product2.jpg",
       "id": 5
     },
     {
       "name": "Chống nắng 1",
       "price": 3330,
       "status": true,
-      "category": "5",
-      "image": "p1.2.jpg",
+      "category": "4",
+      "image": "product3.jpg",
       "id": 6
     },
     {
-      "name": "test",
-      "price": 3,
+      "name": "Mặt nạ 2",
+      "price": 330,
       "status": true,
-      "category": "4",
-      "image": "3463481_media_network_social_youtube_icon.png",
+      "category": "2",
+      "image": "product4.jpg",
       "id": 7
     },
     {
-      "name": "Test",
+      "name": "Trang điểm 2",
       "price": 220,
       "status": true,
       "category": "3",
-      "image": "b2.jpg",
+      "image": "product7.jpg",
       "id": 8
+    },
+    {
+      "name": "Chăm sóc cơ thể 2",
+      "price": 99,
+      "status": true,
+      "category": "5",
+      "image": "product9.jpg",
+      "id": 9
+    },
+    {
+      "name": "Chống nắng 2",
+      "price": 330,
+      "status": true,
+      "category": "4",
+      "image": "product10.jpg",
+      "id": 10
     }
   ]
 }

@@ -1,47 +1,46 @@
-app.controller('loginCtrl', function ($scope, $rootScope, $http) {
-    var url = "http://localhost:3000/users";
-    var users = [];
+app.controller('loginCtrl', function ($scope, $rootScope, $http, $location) {
+  var url = "http://localhost:3000/users";
 
-    $http.get(url).then(
-        function (response) {
-            users = response.data;
-            console.log(users);
-        },
-        function (error) {
-            console.log("Error retrieving user data:", error);
-        }
-    );
+  $http.get(url).then(
+      function (response) {
+          $rootScope.users = response.data;
+      },
+      function (error) {
+          console.log("Error retrieving user data:", error);
+      }
+  );
 
-    $scope.login = function () {
-        event.preventDefault();
-        $scope.message = null;
+  $scope.login = function () {
+      event.preventDefault();
+      $scope.message = null;
 
-        if (!$scope.username || !$scope.password) {
-            $scope.message = { text: "Username và password không được để trống", type: "alert-danger" };
-            return;
-        }
+      if (!$scope.username || !$scope.password) {
+          $scope.message = { text: "Username và password không được để trống", type: "alert-danger" };
+          return;
+      }
 
-        var user = checkLogin($scope.username, $scope.password);
-        console.log(user);
+      var user = checkLogin($scope.username, $scope.password);
 
-        if (user !== null) {
-            alert("Đăng nhập thành công!");
-            window.location.href = "#index";
-        } else {
-            $scope.message = { text: "Sai tài khoản hoặc mật khẩu", type: "alert-danger" };
-        }
-    };
+      if (user !== null) {
+          alert("Đăng nhập thành công!");
+          $rootScope.currentUser = user;
+          $location.path('/Index');
+      } else {
+          $scope.message = { text: "Sai tài khoản hoặc mật khẩu", type: "alert-danger" };
+      }
+  };
 
-    function checkLogin(user, pass) {
-        event.preventDefault();
-        for (var i = 0; i < users.length; i++) {
-            if (users[i].username === user && users[i].password === pass) {
-                return users[i];
-            }
-        }
-        return null;
-    }
+  function checkLogin(user, pass) {
+      event.preventDefault();
+      for (var i = 0; i < $rootScope.users.length; i++) {
+          if ($rootScope.users[i].username === user && $rootScope.users[i].password === pass) {
+              return $rootScope.users[i];
+          }
+      }
+      return null;
+  }
 });
+
   // Đăng ký
   app.controller('registerCtrl', function($scope, $http) {
     var url = "http://localhost:3000/users";
