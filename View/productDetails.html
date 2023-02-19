@@ -6,7 +6,6 @@
     <!-- Navbar -->
     <ng-include src="'/View/navbar.html'"></ng-include>
         <!-- Content -->
-        <!-- Trong template của trang chi tiết sản phẩm -->
         <div class="row" ng-controller="productDetailController">
             <div class="col-6">
                 <img ng-src="img/{{product.image}}" class="img-fluid" alt="">
@@ -24,10 +23,11 @@
                     <p class="text-danger"> còn 10 sản phẩm</p>
                 </div>
                 <h3 class="fw-bold mt-5 mb-5"></h3>
-                <a class="btn text-white btn-success w-50 " href="#" role="button">
+                <a class="btn text-white btn-success w-50" href="#" role="button" ng-click="addToCart(product, quantity)">
                     <img src="/img/icons8-shopping-cart-30.png" class="img-fluid" alt="">
                     Thêm vào giỏ hàng
-                </a>
+                  </a>
+                  
             </div>
         </div>
 
