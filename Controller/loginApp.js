@@ -81,4 +81,10 @@ app.controller('loginCtrl', function ($scope, $rootScope, $http, $location) {
         });
     };
   });
+  app.controller('navCtrl', function($scope, $rootScope, $location, $window) {
+    $scope.logout = function() {
+      $rootScope.currentUser = null;
+      $window.location.reload();
+    };
+  });
   

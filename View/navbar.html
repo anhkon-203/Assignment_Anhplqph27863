@@ -1,19 +1,25 @@
 <div class="row mt-3 mb-3">
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
-            <a class="navbar-brand active fw-bold" href="#index">Trang chủ</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+      <div class="container-fluid">
+        <a class="navbar-brand active fw-bold" href="#index">Trang chủ</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
                 aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav">
-                    <a class="nav-link " aria-current="page" href="#product">Sản phẩm</a>
-                    <a class="nav-link " aria-current="page" href="#introduce">Giới thiệu cửa hàng</a>
-                    <a class="nav-link" aria-current="page" href="#event">Sự kiện</a>
-                </div>
-            </div>
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-link" href="#product">Sản phẩm</a>
+            <a class="nav-link" href="#introduce">Giới thiệu cửa hàng</a>
+            <a class="nav-link" href="#event">Sự kiện</a>
+          </div>
+          <div class="navbar-nav ms-auto" ng-controller="navCtrl">
+            <a class="nav-link" ng-show="!currentUser" href="#login">Đăng nhập</a>
+            <a class="nav-link" ng-show="currentUser" href="#profile">{{currentUser.username}}</a>
+            <a class="nav-link" ng-show="currentUser" href="#index" ng-click="logout()">Đăng xuất</a>
+          </div>
         </div>
+      </div>
     </nav>
-</div>
+  </div>
+  
