@@ -55,6 +55,21 @@
       "username": "2",
       "password": "2",
       "id": 11
+    },
+    {
+      "username": "anhkon2003test",
+      "password": "123456",
+      "id": 12
+    },
+    {
+      "username": "5",
+      "password": "5",
+      "id": 13
+    },
+    {
+      "username": "6",
+      "password": "6",
+      "id": 14
     }
   ],
   "carts": [
@@ -87,12 +102,6 @@
       "idProduct": 5,
       "quantity": "2",
       "id": 5
-    },
-    {
-      "idUser": 3,
-      "idProduct": 3,
-      "quantity": "3",
-      "id": 6
     },
     {
       "idUser": 2,
@@ -143,52 +152,28 @@
       "id": 14
     },
     {
-      "idUser": 3,
-      "idProduct": 2,
-      "quantity": "2",
-      "id": 15
-    },
-    {
-      "idUser": 3,
+      "idUser": 10,
       "idProduct": 3,
-      "quantity": "2",
-      "id": 16
+      "quantity": "1",
+      "id": 28
     },
     {
       "idUser": 3,
-      "idProduct": 3,
-      "quantity": "2",
-      "id": 17
+      "idProduct": 7,
+      "quantity": "6",
+      "id": 29
     },
     {
-      "idUser": 3,
+      "idUser": 13,
       "idProduct": 2,
       "quantity": "3",
-      "id": 18
+      "id": 30
     },
     {
-      "idUser": 3,
-      "idProduct": 1,
-      "quantity": "2",
-      "id": 19
-    },
-    {
-      "idUser": 3,
-      "idProduct": 1,
-      "quantity": "2",
-      "id": 20
-    },
-    {
-      "idUser": 3,
-      "idProduct": 1,
-      "quantity": "2",
-      "id": 21
-    },
-    {
-      "idUser": 3,
-      "idProduct": 1,
-      "quantity": "2",
-      "id": 22
+      "idUser": 14,
+      "idProduct": 2,
+      "quantity": "3",
+      "id": 31
     }
   ],
   "bills": [
@@ -232,7 +217,7 @@
       "name": "Dưỡng da 1",
       "price": 220,
       "status": true,
-      "category": 1,
+      "category": null,
       "image": "product1.jpg",
       "id": 1
     },
@@ -307,14 +292,6 @@
       "category": "4",
       "image": "product10.jpg",
       "id": 10
-    },
-    {
-      "name": "Dưỡng da 3",
-      "price": 220,
-      "status": true,
-      "category": "1",
-      "image": "p1.1.jpg",
-      "id": 11
     }
   ]
 }

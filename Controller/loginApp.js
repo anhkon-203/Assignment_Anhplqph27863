@@ -1,24 +1,22 @@
+// Đăng nhập
 app.controller('loginCtrl', function ($scope, $rootScope, $http, $location) {
   var url = "http://localhost:3000/users";
-
+// Lấy danh sách user từ server
   $http.get(url).then(
     function (response) {
       $rootScope.users = response.data;
-    },
-    function (error) {
-      console.log("Error retrieving user data:", error);
     }
   );
-
+// Xử lí đăng nhập
   $scope.login = function ($event) {
-    $event.preventDefault(); // ngăn chặn trình duyệt load lại trang
+    $event.preventDefault(); 
     $scope.message = null;
-
+// Kiểm tra username và password
     if (!$scope.username || !$scope.password) {
       $scope.message = { text: "Username và password không được để trống", type: "alert-danger" };
       return;
     }
-
+// Kiểm tra thông tin đăng nhập và chuyển hướng đến trang Index
     var user = checkLogin($scope.username, $scope.password);
 
     if (user !== null) {
@@ -43,7 +41,7 @@ app.controller('loginCtrl', function ($scope, $rootScope, $http, $location) {
 // Đăng ký
 app.controller('registerCtrl', function ($scope, $http) {
   var url = "http://localhost:3000/users";
-
+// Xử lí đăng ký
   $scope.register = function () {
     var data = {
       username: $scope.usernameRegister,
@@ -70,17 +68,17 @@ app.controller('registerCtrl', function ($scope, $http) {
               alert("Đăng ký tài khoản thành công");
               // Đóng modal
               $('#registerModal').modal('hide');
-            }, function (error) {
-              console.log('Lỗi khi đăng ký tài khoản:', error);
-            });
+            }
+            , function (response) {
+              console.log('Đăng ký tài khoản thất bại:', response.data);
+              alert("Đăng ký tài khoản thất bại");
+          });
         }
-      }, function (error) {
-        console.log('Lỗi khi kiểm tra tên đăng nhập:', error);
-        alert("Lỗi khi kiểm tra tên đăng nhập");
       });
   };
 });
-app.controller('navCtrl', function ($scope, $rootScope, $location, $window) {
+// Đăng xuất
+app.controller('navCtrl', function ($scope, $rootScope, $location) {
   $scope.logout = function () {
     $rootScope.currentUser = null;
   };

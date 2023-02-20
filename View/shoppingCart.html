@@ -38,7 +38,7 @@
                         <span class="text-center text-truncate text-danger" >{{cart.quantity * products[cart.idProduct-1].price | currency:"đ"}}</span>
                     </div>
                     <div class="col-md-1 col-2">
-                        <button class="btn btn-sm border-1">Xoá</button>
+                        <button class="btn btn-sm border-1" ng-click="deleteProduct(cart, $event)">Xoá</button>
                     </div>
                 </div>
             </div>

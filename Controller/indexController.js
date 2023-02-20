@@ -1,4 +1,4 @@
-var app = angular.module("myapp", ["ngRoute"]);
+var app = angular.module('myapp', ["ngRoute"]);
 app.run(function ($rootScope, $location, $anchorScroll) {
   // Bắt sự kiện khi chuyển page
   $rootScope.$on('$routeChangeSuccess', function (newRoute, oldRoute) {
