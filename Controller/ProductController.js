@@ -8,11 +8,7 @@ function product($scope, $http) {
         category: 1,
         image: ""
     };
-    $scope.showUrl = function () {
-        var fullPath = document.getElementById("myFileInput").value;
-        
-        $scope.product.image = fullPath.split('\\').pop();;
-    };
+  
     function clear() {
         $scope.product = {
             name: "",
@@ -38,6 +34,8 @@ function product($scope, $http) {
         $scope.listProduct = response.data;
     });
     function post() {
+        var fullPath = document.getElementById("myFileInput").files[0];
+         $scope.product.image = fullPath.name;
         $http.post(productApi, $scope.product)
             .then(function (response) {
                 $scope.listProduct.push($scope.product);
@@ -68,17 +66,6 @@ function product($scope, $http) {
                 $scope.listProduct.splice(index, 1);
             });
     }
-
-    $http.get("/db/data.json").then(function (response) {
-        $scope.categories = response.data.categories;
-    });
-
-    $scope.getNameByID = function (categoryID) {
-        var category = $scope.categories.find(function (category) {
-            return category.id == categoryID;
-        });
-        return category ? category.name : '';
-    };
 
     $scope.clear = function (event) {
         event.preventDefault();

@@ -17,6 +17,16 @@
     },
     {
       "id": 5
+    },
+    {
+      "username": "ky",
+      "password": "1",
+      "id": 6
+    },
+    {
+      "username": "test",
+      "password": "1",
+      "id": 7
     }
   ],
   "carts": [
@@ -121,6 +131,18 @@
       "idProduct": 3,
       "quantity": "3",
       "id": 33
+    },
+    {
+      "idUser": 7,
+      "idProduct": 3,
+      "quantity": "1",
+      "id": 34
+    },
+    {
+      "idUser": 3,
+      "idProduct": 2,
+      "quantity": "1",
+      "id": 35
     }
   ],
   "categories": [
@@ -148,6 +170,11 @@
       "name": "Chăm sóc cơ thể",
       "status": true,
       "id": 5
+    },
+    {
+      "name": "test",
+      "status": true,
+      "id": 6
     }
   ],
   "products": [
@@ -230,6 +257,14 @@
       "category": "5",
       "image": "product5.jpg",
       "id": 11
+    },
+    {
+      "name": "test",
+      "price": 220,
+      "status": true,
+      "category": "6",
+      "image": "product1.jpg",
+      "id": 12
     }
   ]
 }
