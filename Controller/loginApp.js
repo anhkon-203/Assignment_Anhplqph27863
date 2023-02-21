@@ -13,7 +13,7 @@ app.controller('loginCtrl', function ($scope, $rootScope, $http, $location) {
     $scope.message = null;
 // Kiểm tra username và password
     if (!$scope.username || !$scope.password) {
-      $scope.message = { text: "Username và password không được để trống", type: "alert-danger" };
+      $scope.message = { text: "Username va Password khong duoc de trong", type: "alert-danger" };
       return;
     }
 // Kiểm tra thông tin đăng nhập và chuyển hướng đến trang Index
@@ -23,7 +23,7 @@ app.controller('loginCtrl', function ($scope, $rootScope, $http, $location) {
       $rootScope.currentUser = user;
       $location.path('/Index');
     } else {
-      $scope.message = { text: "Sai tài khoản hoặc mật khẩu", type: "alert-danger" };
+      $scope.message = { text: "Sai tai khoan va mat khau", type: "alert-danger" };
     }
   };
 
@@ -51,7 +51,7 @@ app.controller('registerCtrl', function ($scope, $http) {
     // Kiểm tra mật khẩu xác nhận
     if ($scope.passwordRegister !== $scope.confirmPassword) {
       $scope.errorMsg = "Mật khẩu xác nhận không khớp";
-      alert("Mật khẩu xác nhận không khớp");
+      alert("Mat khau xac nhan khong khop");
       return;
     }
 
@@ -59,19 +59,19 @@ app.controller('registerCtrl', function ($scope, $http) {
     $http.get('http://localhost:3000/users?username=' + $scope.usernameRegister)
       .then(function (response) {
         if (response.data.length > 0) {
-          alert("Tên đăng nhập đã tồn tại");
+          alert("Ten dang nhap da ton tai");
         } else {
           // Tạo mới tài khoản
           $http.post(url, data)
             .then(function (response) {
               console.log('Đăng ký tài khoản thành công:', response.data);
-              alert("Đăng ký tài khoản thành công");
+              alert("Dang ky tai khoan thanh cong");
               // Đóng modal
               $('#registerModal').modal('hide');
             }
             , function (response) {
               console.log('Đăng ký tài khoản thất bại:', response.data);
-              alert("Đăng ký tài khoản thất bại");
+              alert("Dang ky tai khoan that bai");
           });
         }
       });

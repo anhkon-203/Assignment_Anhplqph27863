@@ -1,9 +1,6 @@
 function product($scope, $http) {
     const productApi = "http://localhost:3000/products";
-
     $scope.updateIndex = -1;
-
-
     $scope.product = {
         name: "",
         price: 0,
@@ -11,15 +8,11 @@ function product($scope, $http) {
         category: 1,
         image: ""
     };
-
-    $scope.showUrl = function() {
-        const fullPath = document.getElementById("myFileInput").value;
-        $scope.product.image = fullPath.split('\\').pop();
-        document.getElementById("imageUrlInput").value = $scope.product.image;
-      }
-
-
-
+    $scope.showUrl = function () {
+        var fullPath = document.getElementById("myFileInput").value;
+        
+        $scope.product.image = fullPath.split('\\').pop();;
+    };
     function clear() {
         $scope.product = {
             name: "",
@@ -28,13 +21,10 @@ function product($scope, $http) {
             category: 1,
             image: ""
         };
+        $scope.updateIndex = -1;
     }
-
     $scope.btnUpdateOnClick = function (event, index) {
         event.preventDefault();
-        var fullPath = document.getElementById("myFileInput").value;
-
-        $scope.product.image = fullPath.split('\\').pop();;
         const p = $scope.listProduct[index];
         $scope.product.name = p.name;
         $scope.product.price = p.price;
@@ -44,23 +34,16 @@ function product($scope, $http) {
     }
 
     $scope.listProduct = [];
-
     $http.get(productApi).then(function (response) {
         $scope.listProduct = response.data;
     });
-
-
     function post() {
         $http.post(productApi, $scope.product)
             .then(function (response) {
-                var fullPath = document.getElementById("myFileInput").value;
-
-                $scope.product.image = fullPath.split('\\').pop();;
                 $scope.listProduct.push($scope.product);
                 clear();
             });
     }
-
     function put() {
         $http.put(productApi + "/" + $scope.listProduct[$scope.updateIndex].id, $scope.product)
             .then(function (response) {
@@ -68,17 +51,12 @@ function product($scope, $http) {
                 clear();
             });
     }
-    
-
     $scope.save = function (event) {
         event.preventDefault();
-
         if ($scope.updateIndex == -1) {
             post();
-
         } else {
             put();
-
         }
     }
 
@@ -95,7 +73,12 @@ function product($scope, $http) {
         $scope.categories = response.data.categories;
     });
 
-
+    $scope.getNameByID = function (categoryID) {
+        var category = $scope.categories.find(function (category) {
+            return category.id == categoryID;
+        });
+        return category ? category.name : '';
+    };
 
     $scope.clear = function (event) {
         event.preventDefault();
@@ -110,5 +93,3 @@ function getListCategory($scope, $http) {
         $scope.listCategory = response.data;
     });
 }
-
-

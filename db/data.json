@@ -1,75 +1,22 @@
 {
   "users": [
     {
-      "id": 1,
-      "fullName": "Nguyen Ngoc Ky",
-      "numberPhone": "0962894271",
-      "password": "123456"
-    },
-    {
       "username": "anhkon2003",
       "password": "123456",
       "id": 2
     },
     {
-      "username": "anhkon2003a",
-      "password": "123456",
-      "id": 3
-    },
-    {
-      "username": "anhkon2003ab",
-      "password": "123456",
-      "id": 4
-    },
-    {
-      "username": "kynn",
-      "password": "1",
-      "id": 5
-    },
-    {
-      "username": "test",
-      "password": "123456",
-      "id": 6
-    },
-    {
-      "username": "test",
-      "password": "123456",
-      "id": 7
-    },
-    {
-      "username": "test",
-      "password": "123456",
-      "id": 8
-    },
-    {
-      "username": "anhkon203",
-      "password": "123456",
-      "id": 9
-    },
-    {
       "username": "1",
       "password": "1",
-      "id": 10
+      "id": 3
     },
     {
       "username": "2",
       "password": "2",
-      "id": 11
+      "id": 4
     },
     {
-      "username": "anhkon2003test",
-      "password": "123456",
-      "id": 12
-    },
-    {
-      "username": "5",
-      "password": "5",
-      "id": 13
-    },
-    {
-      "username": "6",
-      "password": "6",
-      "id": 14
+      "id": 5
     }
   ],
   "carts": [
@@ -152,18 +99,6 @@
       "id": 14
     },
     {
-      "idUser": 10,
-      "idProduct": 3,
-      "quantity": "1",
-      "id": 28
-    },
-    {
-      "idUser": 3,
-      "idProduct": 7,
-      "quantity": "6",
-      "id": 29
-    },
-    {
       "idUser": 13,
       "idProduct": 2,
       "quantity": "3",
@@ -174,15 +109,18 @@
       "idProduct": 2,
       "quantity": "3",
       "id": 31
-    }
-  ],
-  "bills": [
+    },
     {
-      "id": 1,
-      "idUser": 1,
-      "idProduct": 1,
-      "quantity": 5,
-      "status": 1
+      "idUser": 10,
+      "idProduct": 3,
+      "quantity": "3",
+      "id": 32
+    },
+    {
+      "idUser": 2,
+      "idProduct": 3,
+      "quantity": "3",
+      "id": 33
     }
   ],
   "categories": [
@@ -213,14 +151,6 @@
     }
   ],
   "products": [
-    {
-      "name": "Dưỡng da 1",
-      "price": 220,
-      "status": true,
-      "category": null,
-      "image": "product1.jpg",
-      "id": 1
-    },
     {
       "name": "Dưỡng da 2",
       "price": 433,
@@ -286,12 +216,20 @@
       "id": 9
     },
     {
-      "name": "Chống nắng 2",
+      "name": "Dưỡng da 1",
+      "price": 33,
+      "status": true,
+      "category": "1",
+      "image": "product3.jpg",
+      "id": 10
+    },
+    {
+      "name": "Chăm sóc cơ thể 3",
       "price": 330,
       "status": true,
-      "category": "4",
-      "image": "product10.jpg",
-      "id": 10
+      "category": "5",
+      "image": "product5.jpg",
+      "id": 11
     }
   ]
 }

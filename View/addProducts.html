@@ -13,26 +13,20 @@
             <div class="mb-3" ng-controller="category_getList">
                 <label for="category" class="form-label">Category</label>
                 <select class="form-select" id="category" ng-model="product.category">
-                    <option value="" disabled selected>-- Please select a category --</option>
+                    <option value="" disabled selected>-- select a category --</option>
                     <option ng-repeat="category in listCategory | filter: {status: true}" value="{{ category.id }}">
                         {{ category.name }}
                     </option>
                 </select>
             </div>
-            <!-- <div class="mb-3">
-                <label class="form-label">Product Image</label>
-                <input type="file" class="form-control"  onchange="showImage()"
-                    id="myFileInput"   />
-                <input type="text" class="form-control mt-3 " disabled  ng-model="product.image">
-            </div> -->
             <div class="mb-3">
                 <label class="form-label">Product Image</label>
-                <input type="file" class="form-control" onchange="showImage()" id="myFileInput"/>
-                <input type="text" class="form-control mt-3 " ng-model="product.image" id="myTextInput"/>
+                <input type="file" class="form-control" id="myFileInput" />
+                <input type="text" class="form-control mt-3 " ng-model="product.image" id="myTextInput" />
                 <button class="btn btn-success mt-3" ng-click="showUrl()">Show url</button>
             </div>
-        
-            
+
+
             <div class="row">
                 <div class="form-check col-6">
                     <input class="form-check-input ms-5" value="true" type="radio" name="flexRadioDefault" id="rdoTrue"
@@ -50,8 +44,8 @@
                 </div>
             </div>
             <div class="row">
-                <button class="btn btn-success mt-4 col-4 offset-4" ng-click="save($event)">Add
-                    Product</button>
+                <button class="btn btn-success mt-4 col-4 offset-4" ng-click="save($event)">Submit
+                </button>
                 <button class="btn btn-danger mt-4 col-2 offset-2" ng-click="clear($event)">Clear Form</button>
             </div>
         </form>

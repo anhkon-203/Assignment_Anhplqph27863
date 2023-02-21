@@ -11,7 +11,7 @@
 <body ng-app="product_module">
     <div class="container-fluid">
         <div class="row">
-            <!-- Sidebar -->
+            <!-- sidebar -->
             <div class="col-md-3 col-lg-2 text-center text-light" style="background-color:#6E6A6B;">
                 <div class="row mt-5">
                     <h2>Admin</h2>
@@ -25,50 +25,19 @@
             </div>
 
 
-            <!-- Nội dung chính -->
-            <div ng-view class=" row col-md-9 col-lg-10  container-fluid" ng-controller="product_controller"></div>
+            <!-- content -->
+            <div ng-view class=" row col-md-9 col-lg-10 container-fluid" ng-controller="product_controller"></div>
         </div>
     </div>
 
     <script src="/js/bootstrap.min.js"></script>
-    <!-- <script src="/js/popper.min.js"></script> -->
     <script src="/js/jquery.min.js"></script>
     <script src="/js/angular.min.js"></script>
     <script src="/js/angular-route.js"></script>
     <script src="/Controller/ProductController.js"></script>
     <script src="/Controller/CategoryController.js"></script>
-
-    <script>
-
-        const app = angular.module("product_module", ["ngRoute"]);
-
-        app.controller("product_controller", product);
-
-        app.controller("category_getList", getListCategory);
-
-        app.controller("category_controller", category)
-
-        app.config(function ($routeProvider, $locationProvider) {
-            //inject $locationProvider service
-            $locationProvider.hashPrefix(""); // add configuration
-            $routeProvider
-                // menu
-                .when("/addProduct", {
-                    templateUrl: "/View/addProducts.html",
-
-                })
-                .when("/addCategory", {
-                    templateUrl: "/View/addCategory.html",
-
-                })
-                .otherwise(
-                    {
-                        redirectTo: "/addProduct"
-                    });
-
-
-        });
-    </script>
+    <script src="/Controller/adminController.js"></script>
 </body>
+
 
 </html>

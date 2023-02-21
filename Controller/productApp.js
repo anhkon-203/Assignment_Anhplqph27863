@@ -46,6 +46,8 @@ app.controller('productDetailController', function ($scope, $http, $routeParams,
 
     $http.post(cartAPI, data)
       .then(function (response) {
+        alert('Them vao gio hang thanh cong');
+        $location.path('/shoppingCart');
         console.log('Thêm vào giỏ hàng thành công');
 
       }, function (error) {
